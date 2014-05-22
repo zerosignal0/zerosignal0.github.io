@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Testing123 | My Octopress Blog]]></title>
+  <title><![CDATA[Category: Testing123 | The blergh]]></title>
   <link href="http://zerosignal0.github.io/blog/categories/testing123/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-05-22T16:53:05+00:00</updated>
+  <updated>2014-05-22T18:01:52+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
-    <name><![CDATA[Your Name]]></name>
+    <name><![CDATA[Gary Wright]]></name>
     
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
