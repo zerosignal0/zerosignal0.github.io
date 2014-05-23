@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[The blergh]]></title>
-  <link href="http://zerosignal0.github.io/atom.xml" rel="self"/>
+  <title><![CDATA[Category: REDIS | The blergh]]></title>
+  <link href="http://zerosignal0.github.io/blog/categories/redis/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
   <updated>2014-05-23T06:43:04+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
@@ -19,15 +19,6 @@
     <updated>2014-05-23T06:36:28+00:00</updated>
     <id>http://zerosignal0.github.io/blog/2014/05/23/redis-to-the-rescue-slash</id>
     <content type="html"><![CDATA[<p>In working on a project I was having some issues with storing data with a MySQL server that required many read/writes.  Normally this wouldn&rsquo;t be a huge deal except for the systems are states away from eachother with less than reliable throughput and no option for scalable cloud solutions.  I did however have another host in close proximity that was capable of hosting a REDIS based server for me to read/write to.  I have worked with REDIS once before but this experience has been AWESOME so far!  Key/Data stores are one thing but the speed of this technology, when implemented correctly, blows my mind every time.  If you haven&rsquo;t had the chance to work with REDIS you should give it a try, here is a AWESOME interactive demo <a href="http://try.redis.io/">http://try.redis.io/</a></p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Hello World From My Shiny New Octopress Site]]></title>
-    <link href="http://zerosignal0.github.io/blog/2014/05/22/hello-world-from-my-shiny-new-octopress-site/"/>
-    <updated>2014-05-22T16:47:28+00:00</updated>
-    <id>http://zerosignal0.github.io/blog/2014/05/22/hello-world-from-my-shiny-new-octopress-site</id>
-    <content type="html"><![CDATA[<p>Ahoy there, world!</p>
 ]]></content>
   </entry>
   
