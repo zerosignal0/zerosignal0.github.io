@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: Testing123 | The blergh]]></title>
+  <title><![CDATA[Category: testing123 | The blergh]]></title>
   <link href="http://zerosignal0.github.io/blog/categories/testing123/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-05-23T06:43:04+00:00</updated>
+  <updated>2014-05-23T06:50:47+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Hello World From My Shiny New Octopress Site]]></title>
+    <title type="html"><![CDATA[Hello world from my shiny new octopress site]]></title>
     <link href="http://zerosignal0.github.io/blog/2014/05/22/hello-world-from-my-shiny-new-octopress-site/"/>
     <updated>2014-05-22T16:47:28+00:00</updated>
     <id>http://zerosignal0.github.io/blog/2014/05/22/hello-world-from-my-shiny-new-octopress-site</id>
