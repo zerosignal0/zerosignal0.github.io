@@ -4,7 +4,7 @@
   <title><![CDATA[The blergh]]></title>
   <link href="http://zerosignal0.github.io/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-05-23T06:57:10+00:00</updated>
+  <updated>2014-05-23T07:02:26+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -14,7 +14,7 @@
 
   
   <entry>
-    <title type="html"><![CDATA[Redis to the rescue]]></title>
+    <title type="html"><![CDATA[Redis to the Rescue]]></title>
     <link href="http://zerosignal0.github.io/blog/2014/05/23/redis-to-the-rescue-slash/"/>
     <updated>2014-05-23T06:36:28+00:00</updated>
     <id>http://zerosignal0.github.io/blog/2014/05/23/redis-to-the-rescue-slash</id>
@@ -23,7 +23,7 @@
   </entry>
   
   <entry>
-    <title type="html"><![CDATA[Hello world from my shiny new octopress site]]></title>
+    <title type="html"><![CDATA[Hello World From My Shiny New Octopress Site]]></title>
     <link href="http://zerosignal0.github.io/blog/2014/05/22/hello-world-from-my-shiny-new-octopress-site/"/>
     <updated>2014-05-22T16:47:28+00:00</updated>
     <id>http://zerosignal0.github.io/blog/2014/05/22/hello-world-from-my-shiny-new-octopress-site</id>
