@@ -4,7 +4,7 @@
   <title><![CDATA[Category: EC2 | The blergh]]></title>
   <link href="http://zerosignal0.github.io/blog/categories/ec2/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-05-25T21:15:39+00:00</updated>
+  <updated>2014-05-25T21:18:57+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -18,7 +18,7 @@
     <link href="http://zerosignal0.github.io/blog/2014/05/25/messaging-queue-showdown-amazon-sqs-vs-celery-rabbitmq/"/>
     <updated>2014-05-25T19:58:12+00:00</updated>
     <id>http://zerosignal0.github.io/blog/2014/05/25/messaging-queue-showdown-amazon-sqs-vs-celery-rabbitmq</id>
-    <content type="html"><![CDATA[<p>As I am a previous engineer at Amazon AWS I have plenty of experience with AWS services and have exclusively leveraged SQS in many projects.  I have always had a mostly positive experience with Amazon AWS SQS however I have been curious for quite some time what the benefit of rabbitMQ could be vs. SQS. Message queuing is not a new concept and has existed for years within computer science/engineering see: <a href="http://en.wikipedia.org/wiki/Message_queue">http://en.wikipedia.org/wiki/Message_queue</a> if you are unfamiliar with the concept.</p>
+    <content type="html"><![CDATA[<p>As I am a previous engineer at Amazon AWS I have plenty of experience with AWS services and have exclusively leveraged SQS in many projects.  I have always had a mostly positive experience with Amazon AWS SQS <a href="https://aws.amazon.com/sqs/">https://aws.amazon.com/sqs/</a> however I have been curious for quite some time what the benefit of rabbitMQ <a href="http://www.rabbitmq.com/">http://www.rabbitmq.com/</a> could be vs. SQS. Message queuing is not a new concept and has existed for years within computer science/engineering see: <a href="http://en.wikipedia.org/wiki/Message_queue">http://en.wikipedia.org/wiki/Message_queue</a> if you are unfamiliar with the concept.</p>
 
 <p>*I would like to firstly point out that my experiences with both services have been with Python, however I did create a test instance and performed the same tests with Java yielding the same results.</p>
 
