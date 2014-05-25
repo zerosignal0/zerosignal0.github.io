@@ -9,12 +9,11 @@
 <!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
 <head>
   <meta charset="utf-8">
-  <title>The blergh</title>
+  <title>Category: EC2 - The blergh</title>
   <meta name="author" content="Gary Wright">
 
   
-  <meta name="description" content="The blergh
-The personal dumping grounds of an engineer, nerdist and human about me You have landed in the personal &#8220;blergh&#8221; of Gary &hellip;">
+  <meta name="description" content="Category: EC2">
   
 
   <!-- http://t.co/dKP3o1e -->
@@ -23,7 +22,7 @@ The personal dumping grounds of an engineer, nerdist and human about me You have
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   
-  <link rel="canonical" href="http://zerosignal0.github.io">
+  <link rel="canonical" href="http://zerosignal0.github.ioblog/categories/ec2">
   <link href="/favicon.png" rel="icon">
   <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
   <link href="/atom.xml" rel="alternate" title="The blergh" type="application/atom+xml">
@@ -40,118 +39,58 @@ The personal dumping grounds of an engineer, nerdist and human about me You have
       <img src="/images/home.png"/>
     </a>
 
-    <div class="home-page">
-  <div class="hero">
-    <h1>The blergh</h1>
-<p>The personal dumping grounds of an engineer, nerdist and human</p>
-
-  </div>
-
-  <div class="home-field">
-    <div class="home-landing her-row">
-      <div class="container">
-        <div class="row">
-          <div id="about-me" class="col-md-offset-3 col-md-6">
-  <h4>about me</h4>
-  <p>You have landed in the personal &#8220;blergh&#8221; of Gary Wright. I use this space to ramble about things such as network engineering, software development and life stuff..</p>
-  <div class="social-icon-list">
-  	
-    <a title="Twitter" href="https://twitter.com/zerosignal00"><img src="/images/glyphicons_social_31_twitter.png"/></a>
-    
-    
-    <a title="GitHub" href="https://github.com/zerosignal0"><img src="/images/glyphicons_social_21_github.png"/></a>
-    
-    
-  </div>
-</div>
-
-        </div>
+    <div class="all-posts">
+  <div class="container">
+    <div class="row">
+      <div class="list-title col-md-offset-3 col-md-6">
+        <h4>Posts in EC2</h4>
       </div>
     </div>
+  </div>
 
-    <div class="article-list">
-      <div class="container">
+  <div class="article-list">
+    <div class="container">
+      
         
-          
-          <div class="row">
-            <div class="col-md-offset-3 col-md-6">
-              <article>
+        <div class="row">
+          <div class="col-md-offset-3 col-md-6">
+            <article>
   <h2><a href="/blog/2014/05/25/messaging-queue-showdown-amazon-sqs-vs-celery-rabbitmq/">Messaging Queue Showdown: Amazon SQS vs Celery(RabbitMQ)</a></h2>
   
   <p>
     <p>As I am a previous engineer at Amazon AWS I have plenty of experience with AWS services and have exclusively leveraged SQS in many projects.  I have always had a mostly positive experience with Amazon AWS SQS however I have been curious for quite some time what the benefit of rabbitMQ could be vs. SQS. Message queuing is not a new concept and has existed for years within computer science/engineering see: <a href="http://en.wikipedia.org/wiki/Message_queue">http://en.wikipedia.org/wiki/Message_queue</a> if you are unfamiliar with the concept.</p>
 
-
-
-
 <p>*I would like to firstly point out that my experiences with both services have been with Python, however I did create a test instance and performed the same tests with Java yielding the same results.</p>
-
-
-
 
 <p>So I have to start out by saying that Amazons offering for queuing services is fantastic, relatively cheap and easy.  The community has also built some fantastic programmatic libraries to interact with the web services.  So now you may ask, why look at other services?  Well there can be some possible drawbacks of SQS as well that can cause you some problems depending on the situation.</p>
 
-
-
-
 <p>One drawback of SQS implementation is the need for polling of a message queue to determine if new messages have appeared.  This is a bit of an issue being as you must now model your application to perform a polling cycle in order to determine if new messages are available, and if so build the logic around consuming the message and popping it out of the queue.  You must also be mindful of queue settings that control such things as TTL, maximum message length and which endpoints (if multiple are used) the message is destined for.</p>
-
-
-
 
 <p>Beyond the small issue of having to be responsible for your own polling cycle, you are also billed based upon the number of requests to a queue.  I believe the breakdown on billing is something along the lines of 1 million requests == $100.00.  While this isn’t a ton of money it can still get quite costly if your distributed app has 100s of queue and must all be polled.  Especially if your messages come in bursts, in which case you have a lot of empty queue polling which penalizes you. There are different approaches you can take with SQS to apply back-off algorithms to queuing logic, but the penalty is delay in all other inter-dependent services cascades.</p>
 
-
-
-
 <p>So now enter RabbitMQ.</p>
-
-
-
 
 <p>RabbitMQ is a message queue system based on Erlang and conforming to AMQP (a standard and heavily used message queue protocol).  There are obvious overhead in the fact that you must host your own instances of RabbitMQ along with the infrastructure.  Also obvious reliability in multi-AZ redundancy will need to be considered unless you continue to host your instance within EC2 and configure appropriately.</p>
 
-
-
-
 <p>So now lets talk about the speed of RabbitMQ, I have one word to describe it.  FAST! My testing was performed within Amazon EC2 / AWS within the same region|AZ to be fair.  My test was simple, build a queue, spray 5,000 message to the queue as fast as possible, de-queue and discard message.   There are many different configurations  that RabbitMQ can support such as one-to-one, one-to-many, many-to-many, RPC.  In my example I simply used the default which is one-to-one.</p>
 
-
-
-
 <p>So now the “quarter mile” times between the two.</p>
-
-
-
 
 <p>Amazon AWS SQS:
 Region: IAD
 Service: SQS
 Total time: 5:42</p>
 
-
-
-
 <p>RabbitMQ EC2:
 Region: IAD
 Service: EC2
 Total time: 6 seconds</p>
 
-
-
-
 <p>What does this prove!?!</p>
-
-
-
 
 <p>Nothing really besides shoving a lot of messages down the pipe and pulling them out on the other side IS indeed faster using RabbitMQ.  This does not prove however that the actual service is “better” than SQS by any stretch of the imagination.  Both services provide pro/con, and SQS has a rich history of reliable service that affords a great mixture of safe queuing along with a rock solid infrastructure.</p>
 
-
-
-
 <p>On the other hand depending on the configuration of RabbitMQ you can gain a lot of these safeties with seemingly smaller hit in performance in terms of delivery times.  I hope to revisit this topic once I have more time to spend, hopefully this helps educate anyone that is posed with approaching these services in the future though.</p>
-
 
   </p>
   <span class="meta">
@@ -184,104 +123,9 @@ in
   
 </article>
 
-            </div>
           </div>
-        
-          
-          <div class="row">
-            <div class="col-md-offset-3 col-md-6">
-              <article>
-  <h2><a href="/blog/2014/05/23/redis-to-the-rescue-slash/">Redis to the Rescue</a></h2>
-  
-  <p>
-    <p>In working on a project I was having some issues with storing data with a MySQL server that required many read/writes.  Normally this wouldn&rsquo;t be a huge deal except for the systems are states away from eachother with less than reliable throughput and no option for scalable cloud solutions.  I did however have another host in close proximity that was capable of hosting a REDIS based server for me to read/write to.  I have worked with REDIS once before but this experience has been AWESOME so far!  Key/Data stores are one thing but the speed of this technology, when implemented correctly, blows my mind every time.  If you haven&rsquo;t had the chance to work with REDIS you should give it a try, here is a AWESOME interactive demo <a href="http://try.redis.io/">http://try.redis.io/</a></p>
-
-
-  </p>
-  <span class="meta">
-    written 
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-05-23T06:36:28+00:00" pubdate data-updated="true">May 23<span>rd</span>, 2014</time>
-    
-
-in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/nosql/'>NoSQL</a>, <a class='category' href='/blog/categories/redis/'>REDIS</a>
-  
-</span>
-
-
-  </span>
-
-  
-</article>
-
-            </div>
-          </div>
-        
-          
-          <div class="row">
-            <div class="col-md-offset-3 col-md-6">
-              <article>
-  <h2><a href="/blog/2014/05/22/hello-world-from-my-shiny-new-octopress-site/">Hello World From My Shiny New Octopress Site</a></h2>
-  
-  <p>
-    <p>Ahoy there, world!</p>
-
-
-  </p>
-  <span class="meta">
-    written 
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-05-22T16:47:28+00:00" pubdate data-updated="true">May 22<span>nd</span>, 2014</time>
-    
-
-in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/hello-world/'>Hello world</a>, <a class='category' href='/blog/categories/testing123/'>testing123</a>
-  
-</span>
-
-
-  </span>
-
-  
-</article>
-
-            </div>
-          </div>
-        
-      </div>
-    </div>
-
-    <hr class="divider-short"/>
-
-    <div class="archive-link">
-      <h3><a href="/posts/">All Posts</a></h3>
+        </div>
+      
     </div>
   </div>
 </div>
