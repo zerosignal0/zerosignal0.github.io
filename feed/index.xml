@@ -4,7 +4,7 @@
   <title><![CDATA[The blergh]]></title>
   <link href="http://zerosignal0.github.io/feed" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-05-25T21:18:57+00:00</updated>
+  <updated>2014-05-25T21:32:47+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -36,15 +36,15 @@
 
 <p>So now the “quarter mile” times between the two.</p>
 
-<p>Amazon AWS SQS:
-Region: IAD
-Service: SQS
-Total time: 5:42</p>
+<p>Amazon AWS SQS: <br>
+Region: <b>IAD</b><br>
+Service: <b>SQS</b><br>
+Total time: <b>5:42</b><br></p>
 
-<p>RabbitMQ EC2:
-Region: IAD
-Service: EC2
-Total time: 6 seconds</p>
+<p>RabbitMQ EC2:<br>
+Region: <b>IAD</b><br>
+Service: <b>EC2</b><br>
+Total time: <b>6 seconds</b><br></p>
 
 <p>What does this prove!?!</p>
 
