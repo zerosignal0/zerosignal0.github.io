@@ -1,0 +1,215 @@
+
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<!DOCTYPE html>
+<!--[if IEMobile 7 ]><html class="no-js iem7"><![endif]-->
+<!--[if lt IE 9]><html class="no-js lte-ie8"><![endif]-->
+<!--[if (gt IE 8)|(gt IEMobile 7)|!(IEMobile)|!(IE)]><!--><html class="no-js" lang="en"><!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <title>Python: How to Init a Function by Calling It Using a String - The blergh</title>
+  <meta name="author" content="Gary Wright">
+
+  
+  <meta name="description" content="Python: How to Init a Function by Calling It Using a String written May 31st, 2014 This topic is an interesting one that I have faced on a few &hellip;">
+  
+
+  <!-- http://t.co/dKP3o1e -->
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  
+  <link rel="canonical" href="http://zerosignal0.github.io/blog/2014/05/31/python-how-to-init-a-function-by-calling-it-using-a-string">
+  <link href="/favicon.png" rel="icon">
+  <link href="/stylesheets/screen.css" media="screen, projection" rel="stylesheet" type="text/css">
+  <link href="/atom.xml" rel="alternate" title="The blergh" type="application/atom+xml">
+  <script src="/javascripts/modernizr-2.0.js"></script>
+  <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+  <script>!window.jQuery && document.write(unescape('%3Cscript src="./javascripts/libs/jquery.min.js"%3E%3C/script%3E'))</script>
+  <script src="/javascripts/octopress.js" type="text/javascript"></script>
+  
+
+</head>
+
+  <body>
+    <a href="/" class="home-icon">
+      <img src="/images/home.png"/>
+    </a>
+
+    <article role="article" class="full-single-article">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        <h1>Python: How to Init a Function by Calling It Using a String</h1>
+        <div class="meta">
+          written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-05-31T23:22:15+00:00" pubdate data-updated="true">May 31<span>st</span>, 2014</time>
+          
+
+
+        </div>
+        <p>This topic is an interesting one that I have faced on a few occasions.  There are a couple of different solution that I have found over the last couple of years that work depending on the situation.  So let&rsquo;s back up again and state the problem in the form of a question.</p>
+
+<p>&ldquo;How do you call a function in python guven a string of the functions name?&rdquo;</p>
+
+<p>Generally this behavior is not allowed due to the strict type casting of python, ie. a function must be a function type before being able to call.  So how do you approach calling a function by using a string? *note that both of these examples are assuming that the functions being called are residing within imported modules.</p>
+
+<p>Here are a couple of examples:</p>
+
+<p>1.)  Use the getattr() built-in function to evaluate a module object and provide a string attribute denoting the name of the function to execute.</p>
+
+<p>  example:</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import foo # Your module
+</span><span class='line'>
+</span><span class='line'>methodCall = getattr(foo, 'bar')
+</span><span class='line'>
+</span><span class='line'>result = methodCall()</span></code></pre></td></tr></table></div></figure>
+
+
+<p>2.) You can also write an abstract function capable of evaluating the string provided in a function object, and also evaluate if the function exists in a graceful way.
+This approach is a bit more complex and makes use of a couple of different modules, along with leveraging decorator functions.</p>
+
+<p>  example:</p>
+
+<p>  <b>Place this code into a importable module file called registry.py</b></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>class Registry(object):
+</span><span class='line'>
+</span><span class='line'>  def __init__(self):
+</span><span class='line'>    self.funcs = {}
+</span><span class='line'>
+</span><span class='line'>  def execute(self, func):
+</span><span class='line'>    self.funcs[func.__name__] = func
+</span><span class='line'>    return func
+</span><span class='line'>
+</span><span class='line'>  def dispatch(self, name, *args, **kwargs):
+</span><span class='line'>    try:
+</span><span class='line'>      return self.funcs[name](*args, **kwargs)
+</span><span class='line'>    except Exception as e:
+</span><span class='line'>      raise Error(e)</span></code></pre></td></tr></table></div></figure>
+
+
+<p>  <b>Now create a file that contains your functions you wish to call.  In this example call this file myfuncs.py</b></p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import registry
+</span><span class='line'>
+</span><span class='line'>callme = registry.Register()
+</span><span class='line'>
+</span><span class='line'>@callme.execute
+</span><span class='line'>def myCoolFunction():
+</span><span class='line'>  print 'hello world'</span></code></pre></td></tr></table></div></figure>
+
+
+<p>  Finally here is the script that will create the string in which we will attempt to execute as a function.</p>
+
+<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>import myfuncs
+</span><span class='line'>
+</span><span class='line'>runfunc = myfuncs.callme
+</span><span class='line'>
+</span><span class='line'>runfunc.dispatch('myCoolFunction')</span></code></pre></td></tr></table></div></figure>
+
+
+<p>As you can see example 2 is quite a bit more involved however can scale to supporting MANY different function template files.  This means that you can further abstract your code into a template language to dynamically import with.</p>
+
+<p>Enjoy!</p>
+
+      </div>
+    </div>
+  </div>
+</article>
+
+<hr class="divider-short"/>
+
+<div class="archive-link">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-8 col-md-offset-2">
+        
+          <a class="pull-left" href="/blog/2014/05/25/messaging-queue-showdown-amazon-sqs-vs-celery-rabbitmq/" title="Previous Post: Messaging queue showdown: Amazon SQS vs Celery(RabbitMQ)">&laquo; Previous: Messaging queue showdown: Amazon SQS vs Celery(RabbitMQ)</a>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</div>
+
+    <footer id="footer" class="her-row">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-1">
+  <a href="/"><h4>Home</h4></a>
+</div>
+
+<div class="col-md-2">
+  <div class="social-icon-list">
+    
+    <a href="https://twitter.com/zerosignal00"><img src="/images/glyphicons_social_31_twitter.png"/></a>
+    
+
+    
+    <a href="https://github.com/zerosignal0"><img src="/images/glyphicons_social_21_github.png"/></a>
+    
+
+    
+  </div>
+</div>
+
+<div class="pull-right">
+  <h4>Powered by <a href="http://octopress.org/">Octopress</a>. Designed by <a href="http://AdrianArtiles.com">Adrian Artiles</a>.</h4>
+</div>
+
+
+    </div>
+  </div>
+</footer>
+
+  </body>
+</html>
