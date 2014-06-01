@@ -4,7 +4,7 @@
   <title><![CDATA[The blergh]]></title>
   <link href="http://zerosignal0.github.io/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-01T00:05:12+00:00</updated>
+  <updated>2014-06-01T00:07:36+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -35,7 +35,11 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import foo # Your module
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#!/usr/bin/env python
+</span><span class='line'>
+</span><span class='line'>import foo # Your module
 </span><span class='line'>
 </span><span class='line'>methodCall = getattr(foo, 'bar')
 </span><span class='line'>
@@ -63,7 +67,11 @@ This approach is a bit more complex and makes use of a couple of different modul
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>class Registry(object):
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#!/usr/bin/env python
+</span><span class='line'>
+</span><span class='line'>class Registry(object):
 </span><span class='line'>
 </span><span class='line'>  def __init__(self):
 </span><span class='line'>    self.funcs = {}
@@ -88,7 +96,11 @@ This approach is a bit more complex and makes use of a couple of different modul
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import registry
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+</pre></td><td class='code'><pre><code class=''><span class='line'>#!/usr/bin/env python
+</span><span class='line'>
+</span><span class='line'>import registry
 </span><span class='line'>
 </span><span class='line'>callme = registry.Register()
 </span><span class='line'>
