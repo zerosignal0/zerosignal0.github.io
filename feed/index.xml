@@ -4,7 +4,7 @@
   <title><![CDATA[The blergh]]></title>
   <link href="http://zerosignal0.github.io/feed" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-01T00:21:04+00:00</updated>
+  <updated>2014-06-01T00:22:33+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -100,7 +100,7 @@ This approach is a bit more complex and makes use of a couple of different modul
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>  Finally here is the script that will create the string in which we will attempt to execute as a function.</p>
+<p>  <b>Finally here is the script that will create the string in which we will attempt to execute as a function.</b></p>
 
 <figure class='code'><figcaption><span>your_script.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
