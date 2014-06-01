@@ -4,7 +4,7 @@
   <title><![CDATA[The blergh]]></title>
   <link href="http://zerosignal0.github.io/feed" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-01T00:15:24+00:00</updated>
+  <updated>2014-06-01T00:21:04+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -35,11 +35,11 @@
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='pycon'><span class='line'><span class="go">import foo # Your module</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">foo</span> <span class="c"># Your module</span>
 </span><span class='line'>
-</span><span class='line'><span class="go">methodCall = getattr(foo, &#39;bar&#39;)</span>
+</span><span class='line'><span class="n">methodCall</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">)</span>
 </span><span class='line'>
-</span><span class='line'><span class="go">result = methodCall()</span>
+</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="n">methodCall</span><span class="p">()</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
@@ -50,7 +50,7 @@ This approach is a bit more complex and makes use of a couple of different modul
 
 <p>  <b>Place this code into a importable module file called registry.py</b></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>registry.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
@@ -64,52 +64,55 @@ This approach is a bit more complex and makes use of a couple of different modul
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
 <span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>class Registry(object):
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Registry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
 </span><span class='line'>
-</span><span class='line'>  def __init__(self):
-</span><span class='line'>    self.funcs = {}
+</span><span class='line'>  <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">funcs</span> <span class="o">=</span> <span class="p">{}</span>
 </span><span class='line'>
-</span><span class='line'>  def execute(self, func):
-</span><span class='line'>    self.funcs[func.__name__] = func
-</span><span class='line'>    return func
+</span><span class='line'>  <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
+</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">funcs</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="n">__name__</span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">func</span>
 </span><span class='line'>
-</span><span class='line'>  def dispatch(self, name, *args, **kwargs):
-</span><span class='line'>    try:
-</span><span class='line'>      return self.funcs[name](*args, **kwargs)
-</span><span class='line'>    except Exception as e:
-</span><span class='line'>      raise Error(e)</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'>  <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">try</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">funcs</span><span class="p">[</span><span class="n">name</span><span class="p">](</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</span><span class='line'>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+</span><span class='line'>      <span class="k">raise</span> <span class="n">Error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>  <b>Now create a file that contains your functions you wish to call.  In this example call this file myfuncs.py</b></p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>myfuncs.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
 <span class='line-number'>6</span>
 <span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import registry
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">registry</span>
 </span><span class='line'>
-</span><span class='line'>callme = registry.Register()
+</span><span class='line'><span class="n">callme</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">Register</span><span class="p">()</span>
 </span><span class='line'>
-</span><span class='line'>@callme.execute
-</span><span class='line'>def myCoolFunction():
-</span><span class='line'>  print 'hello world'</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="nd">@callme.execute</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">myCoolFunction</span><span class="p">():</span>
+</span><span class='line'>  <span class="k">print</span> <span class="s">&#39;hello world&#39;</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>  Finally here is the script that will create the string in which we will attempt to execute as a function.</p>
 
-<figure class='code'><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>your_script.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
 <span class='line-number'>4</span>
 <span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class=''><span class='line'>import myfuncs
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">myfuncs</span>
 </span><span class='line'>
-</span><span class='line'>runfunc = myfuncs.callme
+</span><span class='line'><span class="n">runfunc</span> <span class="o">=</span> <span class="n">myfuncs</span><span class="o">.</span><span class="n">callme</span>
 </span><span class='line'>
-</span><span class='line'>runfunc.dispatch('myCoolFunction')</span></code></pre></td></tr></table></div></figure>
+</span><span class='line'><span class="n">runfunc</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="s">&#39;myCoolFunction&#39;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
 
 
 <p>As you can see example 2 is quite a bit more involved however can scale to supporting MANY different function template files.  This means that you can further abstract your code into a template language to dynamically import with.</p>
