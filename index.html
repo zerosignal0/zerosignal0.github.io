@@ -112,6 +112,11 @@ The personal dumping grounds of an engineer, nerdist and human about me You have
 </span><span class='line'>    <span class="n">some_func</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
+<br>
+
+
+
+
 <p>Now the above example has an obvious issue in the fact that it never returns which causes a loop.  This loop will continue to iterate until it reaches the system set limitation (as described previously).  If you were to run the above code the end result would be the following snippet.</p>
 
 
@@ -125,12 +130,22 @@ The personal dumping grounds of an engineer, nerdist and human about me You have
 </span><span class='line'><span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">maximum</span> <span class="n">recursion</span> <span class="n">depth</span> <span class="n">exceeded</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
+<br>
+
+
+
+
 <p><b>Intro to base cases</b></p>
 
 
 
 
 <p>To avoid the previous example of recursion running uncontrollably until reaching the limits of the system, we have conditionals which are required to properly gate recursion.  This means that functions that make use of recursion require conditions to be satisfied in order to either <b>continue to recursively call itself</b> or <b>return</b>.  The common conditionals used are if/else.</p>
+
+
+
+
+<br>
 
 
 
@@ -192,6 +207,11 @@ The personal dumping grounds of an engineer, nerdist and human about me You have
 </span><span class='line'>
 </span><span class='line'><span class="k">print</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></p>
+
+<br>
+
+
+
 
 <p>By copying the above code and executing in within python you will be provided with the factorial value of 5!.  A more in depth explanation of recursion can be found <a href="http://interactivepython.org/courselib/static/pythonds/Recursion/recursionsimple.html">http://interactivepython.org/courselib/static/pythonds/Recursion/recursionsimple.html</a></p>
 
