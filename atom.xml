@@ -4,7 +4,7 @@
   <title><![CDATA[The blergh]]></title>
   <link href="http://zerosignal0.github.io/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-03T23:51:32+00:00</updated>
+  <updated>2014-06-03T23:53:31+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -29,6 +29,11 @@
 
 <p><b>*note to determine the value set on your system, open your python interpreter and run the following:</b></p>
 
+<br><br>
+
+
+
+
 <figure class='code'><figcaption><span>determine recursion limit</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">Import</span> <span class="n">sys</span>
@@ -36,7 +41,15 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<br><br>
+
+
 <p>Another thing to consider when writing a recursive function is that, recursion is indeed the best approach.  I have seen instances where introduction can actually cause code complication along with poor performance vs. other design patterns.</p>
+
+<br><br>
+
+
+
 
 <figure class='code'><figcaption><span>simple example</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -45,10 +58,15 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<br>
+<br><br>
 
 
 <p>Now the above example has an obvious issue in the fact that it never returns which causes a loop.  This loop will continue to iterate until it reaches the system set limitation (as described previously).  If you were to run the above code the end result would be the following snippet.</p>
+
+<br><br>
+
+
+
 
 <figure class='code'><figcaption><span>simple example output</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -61,19 +79,27 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<br>
+<br><br><br>
 
 
 <p><b>Intro to base cases</b></p>
 
 <p>To avoid the previous example of recursion running uncontrollably until reaching the limits of the system, we have conditionals which are required to properly gate recursion.  This means that functions that make use of recursion require conditions to be satisfied in order to either <b>continue to recursively call itself</b> or <b>return</b>.  The common conditionals used are if/else.</p>
 
-<br>
+<br><br><br>
 
 
 <p><b>Example recursion code snippet</b></p>
 
+<br>
+
+
 <p>The most common example to describe usage of recursion is within the factoring of factorial for a given number.  In the spirit of this, I am going to provide a code example of using recursion to determine the factorial for a given number.  As a quick explanation, if your unfamiliar with factorials. A factorial is a product of multiplication: the number resulting from multiplying a whole number by every whole number between itself and 1 inclusive.  (n!, or n * n-1 * n-2 &hellip; 0).</p>
+
+<br><br><br>
+
+
+
 
 <figure class='code'><figcaption><span>factorial example</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -128,7 +154,7 @@
 
 
 
-<br>
+<br><br><br>
 
 
 <p>By copying the above code and executing in within python you will be provided with the factorial value of 5!.  A more in depth explanation of recursion can be found <a href="http://interactivepython.org/courselib/static/pythonds/Recursion/recursionsimple.html">http://interactivepython.org/courselib/static/pythonds/Recursion/recursionsimple.html</a></p>

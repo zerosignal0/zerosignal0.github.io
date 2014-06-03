@@ -81,13 +81,28 @@
 <p><b>*note to determine the value set on your system, open your python interpreter and run the following:</b></p>
 
 
+
+
+<br><br>
+
+
 <p><figure class='code'><figcaption><span>determine recursion limit</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">Import</span> <span class="n">sys</span>
 </span><span class='line'><span class="n">sys</span><span class="o">.</span><span class="n">getrecursionlimit</span><span class="p">()</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
+<br><br>
+
+
+
+
 <p>Another thing to consider when writing a recursive function is that, recursion is indeed the best approach.  I have seen instances where introduction can actually cause code complication along with poor performance vs. other design patterns.</p>
+
+
+
+
+<br><br>
 
 
 <p><figure class='code'><figcaption><span>simple example</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -96,12 +111,17 @@
 </span><span class='line'>    <span class="n">some_func</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
-<br>
+<br><br>
 
 
 
 
 <p>Now the above example has an obvious issue in the fact that it never returns which causes a loop.  This loop will continue to iterate until it reaches the system set limitation (as described previously).  If you were to run the above code the end result would be the following snippet.</p>
+
+
+
+
+<br><br>
 
 
 <p><figure class='code'><figcaption><span>simple example output</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -114,7 +134,7 @@
 </span><span class='line'><span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">maximum</span> <span class="n">recursion</span> <span class="n">depth</span> <span class="n">exceeded</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
-<br>
+<br><br><br>
 
 
 
@@ -129,7 +149,7 @@
 
 
 
-<br>
+<br><br><br>
 
 
 
@@ -139,7 +159,17 @@
 
 
 
+<br>
+
+
+
+
 <p>The most common example to describe usage of recursion is within the factoring of factorial for a given number.  In the spirit of this, I am going to provide a code example of using recursion to determine the factorial for a given number.  As a quick explanation, if your unfamiliar with factorials. A factorial is a product of multiplication: the number resulting from multiplying a whole number by every whole number between itself and 1 inclusive.  (n!, or n * n-1 * n-2 &hellip; 0).</p>
+
+
+
+
+<br><br><br>
 
 
 <p><figure class='code'><figcaption><span>factorial example</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -192,7 +222,7 @@
 </span><span class='line'><span class="k">print</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
-<br>
+<br><br><br>
 
 
 
