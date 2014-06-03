@@ -4,7 +4,7 @@
   <title><![CDATA[The blergh]]></title>
   <link href="http://zerosignal0.github.io/feed" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-03T23:50:40+00:00</updated>
+  <updated>2014-06-03T23:51:32+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -19,6 +19,9 @@
     <updated>2014-06-03T23:14:06+00:00</updated>
     <id>http://zerosignal0.github.io/blog/2014/06/03/python-introduction-to-recursion</id>
     <content type="html"><![CDATA[<p>I have been asked recently to write up a description on recursion in regards to python recursive functions.  I figured this is a topic that generally confuses most engineers that I work with and is probably worthy of a quick blog post.</p>
+
+<br><br><br>
+
 
 <p><b>So first of all what is recursion?</b></p>
 
