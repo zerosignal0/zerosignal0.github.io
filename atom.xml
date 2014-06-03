@@ -4,7 +4,7 @@
   <title><![CDATA[The blergh]]></title>
   <link href="http://zerosignal0.github.io/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-03T23:53:31+00:00</updated>
+  <updated>2014-06-03T23:58:22+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -157,7 +157,12 @@
 <br><br><br>
 
 
-<p>By copying the above code and executing in within python you will be provided with the factorial value of 5!.  A more in depth explanation of recursion can be found <a href="http://interactivepython.org/courselib/static/pythonds/Recursion/recursionsimple.html">http://interactivepython.org/courselib/static/pythonds/Recursion/recursionsimple.html</a></p>
+<p>By copying the above code and executing in within python you will be provided with the factorial value of 5!.  The expected return number is 120.</p>
+
+<br>
+
+
+<p>A more in depth explanation of recursion can be found <a href="http://interactivepython.org/courselib/static/pythonds/Recursion/recursionsimple.html">http://interactivepython.org/courselib/static/pythonds/Recursion/recursionsimple.html</a></p>
 
 <p> I plan on doing a part 2 for this post in the near future so if you found this interesting that look out for it.</p>
 ]]></content>
