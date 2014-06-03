@@ -4,7 +4,7 @@
   <title><![CDATA[The blergh]]></title>
   <link href="http://zerosignal0.github.io/feed" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-01T00:26:34+00:00</updated>
+  <updated>2014-06-03T23:46:12+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -12,6 +12,119 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Python: Introduction to recursion]]></title>
+    <link href="http://zerosignal0.github.io/blog/2014/06/03/python-introduction-to-recursion/"/>
+    <updated>2014-06-03T23:14:06+00:00</updated>
+    <id>http://zerosignal0.github.io/blog/2014/06/03/python-introduction-to-recursion</id>
+    <content type="html"><![CDATA[<p>I have been asked recently to write up a description on recursion in regards to python recursive functions.  I figured this is a topic that generally confuses most engineers that I work with and is probably worthy of a quick blog post.</p>
+
+<p><b>So first of all what is recursion?</b></p>
+
+<p>Recursive functions are functions that call themselves in their definition. Because a recursive function calls on itself to perform its task, it can make jobs that contain identical work on multiple data objects easier to conceptualize, plan and write.  Recursion can also be quite taxing on the server in which it is being ran and also has limitations which can sometimes cause issues in the future.  For example recursive functions, by default, Windows has a recursion limit of 1000 (as does OSX).  Linux, depending on the flavor, can range but generally is 2147483647 (2<sup>31</sup> &ndash; 1).</p>
+
+<p><b>*note to determine the value set on your system, open your python interpreter and run the following:</b></p>
+
+<figure class='code'><figcaption><span>determine recursion limit</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">Import</span> <span class="n">sys</span>
+</span><span class='line'><span class="n">sys</span><span class="o">.</span><span class="n">getrecursionlimit</span><span class="p">()</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Another thing to consider when writing a recursive function is that, recursion is indeed the best approach.  I have seen instances where introduction can actually cause code complication along with poor performance vs. other design patterns.</p>
+
+<figure class='code'><figcaption><span>simple example</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">some_func</span><span class="p">(</span><span class="n">z</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">some_func</span><span class="p">(</span><span class="n">z</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>Now the above example has an obvious issue in the fact that it never returns which causes a loop.  This loop will continue to iterate until it reaches the system set limitation (as described previously).  If you were to run the above code the end result would be the following snippet.</p>
+
+<figure class='code'><figcaption><span>simple example output</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'>  <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="n">some_func</span>
+</span><span class='line'>  <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="n">some_func</span>
+</span><span class='line'>  <span class="n">File</span> <span class="s">&quot;&lt;stdin&gt;&quot;</span><span class="p">,</span> <span class="n">line</span> <span class="mi">2</span><span class="p">,</span> <span class="ow">in</span> <span class="n">some_func</span>
+</span><span class='line'><span class="ne">RuntimeError</span><span class="p">:</span> <span class="n">maximum</span> <span class="n">recursion</span> <span class="n">depth</span> <span class="n">exceeded</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><b>Intro to base cases</b></p>
+
+<p>To avoid the previous example of recursion running uncontrollably until reaching the limits of the system, we have conditionals which are required to properly gate recursion.  This means that functions that make use of recursion require conditions to be satisfied in order to either <b>continue to recursively call itself</b> or <b>return</b>.  The common conditionals used are if/else.</p>
+
+<p><b>Example recursion code snippet</b></p>
+
+<p>The most common example to describe usage of recursion is within the factoring of factorial for a given number.  In the spirit of this, I am going to provide a code example of using recursion to determine the factorial for a given number.  As a quick explanation, if your unfamiliar with factorials. A factorial is a product of multiplication: the number resulting from multiplying a whole number by every whole number between itself and 1 inclusive.  (n!, or n * n-1 * n-2 &hellip; 0).</p>
+
+<figure class='code'><figcaption><span>factorial example</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">An example of a factorial number is the following:</span>
+</span><span class='line'><span class="sd">5! = 5 * 4 * 3 * 2 * 1</span>
+</span><span class='line'><span class="sd">Or </span>
+</span><span class='line'><span class="sd">5! = 5 * 4!</span>
+</span><span class='line'><span class="sd">Etc...</span>
+</span><span class='line'><span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">factorial</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">number</span> <span class="o">&lt;=</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">           return 1, which will also unwind all of the numbers </span>
+</span><span class='line'><span class="sd">           included in determining the factorial.</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="sd">&quot;&quot;&quot;</span>
+</span><span class='line'><span class="sd">           Call this function again recursively only subtracting</span>
+</span><span class='line'><span class="sd">           1 prime number from the previously provided number.</span>
+</span><span class='line'><span class="sd">        &quot;&quot;&quot;</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">number</span> <span class="o">*</span> <span class="n">factorial</span><span class="p">(</span><span class="n">number</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span> <span class="n">factorial</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p>By copying the above code and executing in within python you will be provided with the factorial value of 5!.  A more in depth explanation of recursion can be found <a href="http://interactivepython.org/courselib/static/pythonds/Recursion/recursionsimple.html">http://interactivepython.org/courselib/static/pythonds/Recursion/recursionsimple.html</a></p>
+
+<p> I plan on doing a part 2 for this post in the near future so if you found this interesting that look out for it.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python: How to init a function by calling it using a string]]></title>
