@@ -4,7 +4,7 @@
   <title><![CDATA[Category: design patterns | The blergh]]></title>
   <link href="http://zerosignal0.github.io/blog/categories/design-patterns/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-04T05:02:44+00:00</updated>
+  <updated>2014-06-04T05:04:47+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -43,14 +43,14 @@
 <br>
 
 
-<p>The Fibonacci integers are defined by the equation:
+<p>The Fibonacci numbers are defined by the equation:
 Fn = Fn-1 + Fn-2
 with F0 = 0 and F1 = 1</p>
 
 <br><br>
 
 
-<p>The Fibonacci sequence is named after the mathematician Leonardo of Pisa, who is better known as Fibonacci. In his book &ldquo;Liber Abaci&rdquo; (published 1202) he introduced the sequence as an exercise dealing with (biologically unrealistic) rabbit breeding habits. His sequence of the Fibonacci numbers begins with F1 = 1, while in modern mathematics the sequence starts with F0 = 0. But this has no effect on the other members of the sequence.</p>
+<p>The Fibonacci sequence(numbers) are named after the mathematician Leonardo of Pisa, who is better known as Fibonacci. In his book &ldquo;Liber Abaci&rdquo; (published 1202) he introduced the sequence as an exercise dealing with (biologically unrealistic) rabbit breeding habits. His sequence of the Fibonacci numbers begins with F1 = 1, while in modern mathematics the sequence starts with F0 = 0. But this has no effect on the other members of the sequence.</p>
 
 <br><br>
 
