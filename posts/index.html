@@ -88,7 +88,7 @@
 
 
 
-<p>The Fibonacci numbers are the numbers of the following sequence of integer values:</p>
+<p>The Fibonacci numbers are a sequence of the following integer values:</p>
 
 
 
@@ -108,7 +108,7 @@
 
 
 
-<p>The Fibonacci numbers are defined by:
+<p>The Fibonacci integers are defined by the equation:
 Fn = Fn-1 + Fn-2
 with F0 = 0 and F1 = 1</p>
 
@@ -327,19 +327,27 @@ The rabbits are able to successfully mate at the age of one month. This means th
 <span class='line-number'>11</span>
 <span class='line-number'>12</span>
 <span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
 </pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
 </span><span class='line'><span class="kn">from</span> <span class="nn">import_me</span> <span class="kn">import</span> <span class="n">fibonacci_recursive</span>
 </span><span class='line'>
 </span><span class='line'><span class="n">t1</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="s">&quot;fibonacci_recursive(10)&quot;</span><span class="p">,</span><span class="s">&quot;from import_me import fibonacci_recursive&quot;</span><span class="p">)</span>
 </span><span class='line'>
 </span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">41</span><span class="p">):</span>
-</span><span class='line'>  <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;fibonacci_recursive(&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">t1</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s">&quot;from import_me import fibonacci_recursive&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">time1</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;fibonacci_iterative(&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">t2</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s">&quot;from import_me import fibonacci_iterative&quot;</span><span class="p">)</span>
-</span><span class='line'>  <span class="n">time2</span> <span class="o">=</span> <span class="n">t2</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
-</span><span class='line'>  <span class="k">print</span><span class="p">(</span><span class="s">&quot;n=</span><span class="si">%2d</span><span class="s">, recursive exec time: </span><span class="si">%8.6f</span><span class="s">, iterative exec time:  </span><span class="si">%7.6f</span><span class="s">, iterative percent faster: </span><span class="si">%10.2f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">time1</span><span class="p">,</span> <span class="n">time2</span><span class="p">,</span> <span class="n">time1</span><span class="o">/</span><span class="n">time2</span><span class="p">))</span>
+</span><span class='line'>    <span class="c">#Import, execute and time recursive function.</span>
+</span><span class='line'>    <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;fibonacci_recursive(&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">t1</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s">&quot;from import_me import fibonacci_recursive&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">time1</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="c">#Import, execute and time iterative function. </span>
+</span><span class='line'>    <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;fibonacci_iterative(&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">t2</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s">&quot;from import_me import fibonacci_iterative&quot;</span><span class="p">)</span>
+</span><span class='line'>    <span class="n">time2</span> <span class="o">=</span> <span class="n">t2</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>    <span class="k">print</span><span class="p">(</span><span class="s">&quot;n=</span><span class="si">%2d</span><span class="s">, recursive exec time: </span><span class="si">%8.6f</span><span class="s">, iterative exec time:  </span><span class="si">%7.6f</span><span class="s">, iterative percent faster: </span><span class="si">%10.2f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">time1</span><span class="p">,</span> <span class="n">time2</span><span class="p">,</span> <span class="n">time1</span><span class="o">/</span><span class="n">time2</span><span class="p">))</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
 <br><br>

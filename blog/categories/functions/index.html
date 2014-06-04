@@ -73,7 +73,7 @@
 <br>
 
 
-<p>The Fibonacci numbers are the numbers of the following sequence of integer values:</p>
+<p>The Fibonacci numbers are a sequence of the following integer values:</p>
 
 <br>
 
@@ -83,7 +83,7 @@
 <br>
 
 
-<p>The Fibonacci numbers are defined by:
+<p>The Fibonacci integers are defined by the equation:
 Fn = Fn-1 + Fn-2
 with F0 = 0 and F1 = 1</p>
 
@@ -220,12 +220,16 @@ from import_me import fibonacci_recursive</p>
 
 <p>for i in range(1,41):</p>
 
-<pre><code>s = ("fibonacci_recursive(" + str(i) + ")")
+<pre><code>#Import, execute and time recursive function.
+s = ("fibonacci_recursive(" + str(i) + ")")
 t1 = Timer(s,"from import_me import fibonacci_recursive")
 time1 = t1.timeit(3)
+
+#Import, execute and time iterative function. 
 s = ("fibonacci_iterative(" + str(i) + ")")
 t2 = Timer(s,"from import_me import fibonacci_iterative")
 time2 = t2.timeit(3)
+
 print("n=%2d, recursive exec time: %8.6f, iterative exec time:  %7.6f, iterative percent faster: %10.2f" % (i, time1, time2, time1/time2))
 </code></pre>
 
