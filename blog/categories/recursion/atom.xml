@@ -4,7 +4,7 @@
   <title><![CDATA[Category: recursion | The blergh]]></title>
   <link href="http://zerosignal0.github.io/blog/categories/recursion/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-04T05:04:47+00:00</updated>
+  <updated>2014-06-04T05:06:17+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -198,7 +198,7 @@ print("n=%2d, recursive exec time: %8.6f, iterative exec time:  %7.6f, iterative
 <br><br>
 
 
-<p><code>python output
+<p><code>output
 n= 1, recursive exec time: 0.000005, iterative exec time:  0.000007, iterative percent faster:       0.72
 n= 2, recursive exec time: 0.000007, iterative exec time:  0.000007, iterative percent faster:       1.00
 n= 3, recursive exec time: 0.000008, iterative exec time:  0.000007, iterative percent faster:       1.14
