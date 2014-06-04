@@ -76,6 +76,405 @@ The personal dumping grounds of an engineer, nerdist and human about me You have
           <div class="row">
             <div class="col-md-offset-3 col-md-6">
               <article>
+  <h2><a href="/blog/2014/06/04/python-recursion/">Python: Recursion</a></h2>
+  
+  <p>
+    <p>I ended up on a roll tonight writing my documentation on python recursive functions and decided to continue writing the second portion of this blog entry as well.  In this post I plan to provide you with a slightly more complicated example of a recursive function while also showing a side-by-side comparison of recursion vs. iteration (Spoiler alert, iteration wins!).</p>
+
+
+
+
+<br><br>
+
+
+
+
+<p><b>Italians and integers, breeding like rabbits!</b></p>
+
+
+
+
+<br><br>
+
+
+
+
+<p>My example algorithm that I am introducing for advanced recursive method usage is none other than the <a href=”http://en.wikipedia.org/wiki/Fibonacci_number”>Fibonacci number</a>.</p>
+
+
+
+
+<br>
+
+
+
+
+<p>The Fibonacci numbers are the numbers of the following sequence of integer values:</p>
+
+
+
+
+<br>
+
+
+
+
+<p><i>0,1,1,2,3,5,8,13,21,34,55,89,144 &hellip;</i></p>
+
+
+
+
+<br>
+
+
+
+
+<p>The Fibonacci numbers are defined by:
+Fn = Fn-1 + Fn-2
+with F0 = 0 and F1 = 1</p>
+
+
+
+
+<br><br>
+
+
+
+
+<p>The Fibonacci sequence is named after the mathematician Leonardo of Pisa, who is better known as Fibonacci. In his book &ldquo;Liber Abaci&rdquo; (published 1202) he introduced the sequence as an exercise dealing with (biologically unrealistic) rabbit breeding habits. His sequence of the Fibonacci numbers begins with F1 = 1, while in modern mathematics the sequence starts with F0 = 0. But this has no effect on the other members of the sequence.</p>
+
+
+
+
+<br><br>
+
+
+
+
+<p>OK, now that you are familiar with the introduction of Fionacci numbers lets get to the gooey, nerdy center of this example! ☺</p>
+
+
+
+
+<br><br><br>
+
+
+
+
+<p><b>Solving for Fibonacci sequencing in Python</b></p>
+
+
+
+
+<br><br>
+
+
+
+
+<p>The Fibonacci numbers are the result of an artificial rabbit population, satisfying the following conditions: <br><br></p>
+
+
+
+
+<p>A newly born pair of rabbits, one male, one female, build the initial population.
+The rabbits are able to successfully mate at the age of one month. This means that at the end of the second month of life, the female rabbit gives birth to 2 “hoppy”(harhar), healthy rabbits.  The new sibling pair of rabbits consist of 1 male and one female.  Did I mention that all of the rabbit spawn are immortal?!? Every rabbit from here on out will never die and just keep producing offspring. What a job, eh? Every new pair of male|female rabbits will continue to mate after the second month of life until infinity.  The Fibonacci numbers are the numbers of rabbit pairs after n months, i.e. after 10 months we will have F10 rabbits. <br><br></p>
+
+
+
+
+<p>The Fibonacci equation is very easy to program, as your equation depicted within the code is almost 1:1 with the original equation:</p>
+
+
+
+
+<br><br>
+
+
+<p><figure class='code'><figcaption><span>Fibonacci recursive example</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fibonacci_recursive</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">fibonacci_recursive</span><span class="p">(</span><span class="n">n</span><span class="o">&ndash;</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci_recursive</span><span class="p">(</span><span class="n">n</span><span class="o">&ndash;</span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<br><br>
+
+
+
+
+<p>The above example depicts the Fibonacci numbers solution by using recursive methods.  Now I will provide an example of a python function that returns the same Fibonacci numbers only using iteration instead of recursion.</p>
+
+
+
+
+<br><br>
+
+
+<p><figure class='code'><figcaption><span>Finbonacci iterative example</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fibonacci_iterative</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">a</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<br><br>
+
+
+
+
+<p>If you try both of these functions in your python interpreter you will notice that fibonacci_iterative method is “Orders of magnitude” faster than the fibonacci_recursive equivalent.</p>
+
+
+
+
+<br><br><br>
+
+
+
+
+<p><b>Why is recursion so slow?!</b></p>
+
+
+
+
+<br><br>
+
+
+
+
+<p>In Java, C, and Python, recursion is fairly expensive compared to iteration (in general) because it requires the allocation of a new stack frame. In some C compilers, one can use a compiler flag to eliminate this overhead, which transforms certain types of recursion (actually, certain types of tail calls) into jumps instead of function calls.</p>
+
+
+
+
+<p>In functional programming language implementations, sometimes, iteration can be very expensive and recursion can be very cheap. In many, recursion is transformed into a simple jump, but changing the loop variable (which is mutable) sometimes requires some relatively heavy operations, especially on implementations, which support multiple threads of execution. Mutation is expensive in some of these environments because of the interaction between the mutator and the garbage collector, if both might be running at the same time.</p>
+
+
+
+
+<p>There are practical ways that we can help along recursive functions in order to speed them up however.  Lets move onto the race between recursion vs. iteration and then we can describe how to speed up our recursion functions in this example.</p>
+
+
+
+
+<br><br><br>
+
+
+
+
+<p><b>The great race</b></p>
+
+
+
+
+<br><br>
+
+
+
+
+<p>In the example below we are going to place both of our above Fibonacci functions into an importable python file.  Then we are going to write a new script that imports / executes both functions while performing timing calculations comparing the execution times.</p>
+
+
+
+
+<br><br>
+
+
+<p><figure class='code'><figcaption><span>import_me.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">def</span> <span class="nf">fibonacci_iterative</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>        <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+</span><span class='line'>    <span class="k">return</span> <span class="n">a</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">def</span> <span class="nf">fibonacci_recursive</span><span class="p">(</span><span class="n">n</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">if</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="mi">0</span>
+</span><span class='line'>    <span class="k">elif</span> <span class="n">n</span> <span class="o">==</span> <span class="mi">1</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="mi">1</span>
+</span><span class='line'>    <span class="k">else</span><span class="p">:</span>
+</span><span class='line'>        <span class="k">return</span> <span class="n">fibonacci_recursive</span><span class="p">(</span><span class="n">n</span><span class="o">&ndash;</span><span class="mi">1</span><span class="p">)</span> <span class="o">+</span> <span class="n">fibonacci_recursive</span><span class="p">(</span><span class="n">n</span><span class="o">&ndash;</span><span class="mi">2</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<br><br>
+
+
+
+
+<p>Now we will write a python script that will allow for us to import and execute the two functions within “import_me.py” and measure the execution times.</p>
+
+
+
+
+<br><br><br>
+
+
+<p><figure class='code'><figcaption><span>lets_race.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">from</span> <span class="nn">timeit</span> <span class="kn">import</span> <span class="n">Timer</span>
+</span><span class='line'><span class="kn">from</span> <span class="nn">import_me</span> <span class="kn">import</span> <span class="n">fibonacci_recursive</span>
+</span><span class='line'>
+</span><span class='line'><span class="n">t1</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="s">&quot;fibonacci_recursive(10)&quot;</span><span class="p">,</span><span class="s">&quot;from import_me import fibonacci_recursive&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">41</span><span class="p">):</span>
+</span><span class='line'>  <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;fibonacci_recursive(&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">t1</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s">&quot;from import_me import fibonacci_recursive&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">time1</span> <span class="o">=</span> <span class="n">t1</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">s</span> <span class="o">=</span> <span class="p">(</span><span class="s">&quot;fibonacci_iterative(&quot;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span> <span class="o">+</span> <span class="s">&quot;)&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">t2</span> <span class="o">=</span> <span class="n">Timer</span><span class="p">(</span><span class="n">s</span><span class="p">,</span><span class="s">&quot;from import_me import fibonacci_iterative&quot;</span><span class="p">)</span>
+</span><span class='line'>  <span class="n">time2</span> <span class="o">=</span> <span class="n">t2</span><span class="o">.</span><span class="n">timeit</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+</span><span class='line'>  <span class="k">print</span><span class="p">(</span><span class="s">&quot;n=</span><span class="si">%2d</span><span class="s">, recursive exec time: </span><span class="si">%8.6f</span><span class="s">, iterative exec time:  </span><span class="si">%7.6f</span><span class="s">, iterative percent faster: </span><span class="si">%10.2f</span><span class="s">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">time1</span><span class="p">,</span> <span class="n">time2</span><span class="p">,</span> <span class="n">time1</span><span class="o">/</span><span class="n">time2</span><span class="p">))</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<br><br>
+
+
+<p><figure class='code'><figcaption><span>output</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">n</span><span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.000005</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000007</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>       <span class="mf">0.72</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.000007</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000007</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>       <span class="mf">1.00</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.000008</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000007</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>       <span class="mf">1.14</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.000011</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000008</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>       <span class="mf">1.35</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.000017</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000008</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>       <span class="mf">2.09</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.000026</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000008</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>       <span class="mf">3.21</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.006997</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000016</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>     <span class="mf">438.01</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.000060</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000009</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>       <span class="mf">6.63</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span> <span class="mi">9</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.000093</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000010</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>       <span class="mf">9.29</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.000148</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000010</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>      <span class="mf">14.79</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.000236</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000010</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>      <span class="mf">23.57</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">12</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.000381</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000010</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>      <span class="mf">38.05</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">13</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.007792</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000012</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>     <span class="mf">653.64</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">14</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.001105</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000012</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>      <span class="mf">92.70</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.008806</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000012</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>     <span class="mf">724.22</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">16</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.010133</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000017</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>     <span class="mf">598.61</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">17</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.019284</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000018</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>    <span class="mf">1064.25</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">18</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.022575</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000017</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>    <span class="mf">1333.61</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">19</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.056988</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000020</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>    <span class="mf">2845.54</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.079930</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000019</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>    <span class="mf">4243.67</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">21</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.114535</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000018</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>    <span class="mf">6405.25</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">22</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.157802</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000018</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>    <span class="mf">8708.80</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">23</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.261647</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000018</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>   <span class="mf">14439.83</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">24</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.425641</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000018</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>   <span class="mf">23803.57</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">25</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">0.685106</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000019</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>   <span class="mf">35919.29</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">26</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">1.090093</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000018</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>   <span class="mf">60962.41</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">27</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">1.777188</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000019</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>   <span class="mf">93175.84</span>
+</span><span class='line'><span class="n">n</span><span class="o">=</span><span class="mi">28</span><span class="p">,</span> <span class="n">recursive</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span> <span class="mf">2.874248</span><span class="p">,</span> <span class="n">iterative</span> <span class="k">exec</span> <span class="n">time</span><span class="p">:</span>  <span class="mf">0.000020</span><span class="p">,</span> <span class="n">iterative</span> <span class="n">percent</span> <span class="n">faster</span><span class="p">:</span>  <span class="mf">143517.50</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<br><br><br>
+
+
+
+
+<p>In part three of this blog series I will cover in greater detail why the recursive solution is slower than the iterative solution.  I will also cover some tips / tricks that we can do to help tune the recursive function in order to make it perform much like its iterative counterpart.</p>
+
+
+
+
+<p>-g</p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-06-04T03:09:08+00:00" pubdate data-updated="true">Jun 4<span>th</span>, 2014</time>
+    
+
+in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/design-patterns/'>design patterns</a>, <a class='category' href='/blog/categories/fibonacci/'>fibonacci</a>, <a class='category' href='/blog/categories/functions/'>functions</a>, <a class='category' href='/blog/categories/python/'>python</a>, <a class='category' href='/blog/categories/recursion/'>recursion</a>
+  
+</span>
+
+
+  </span>
+
+  
+</article>
+
+            </div>
+          </div>
+        
+          
+          <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+              <article>
   <h2><a href="/blog/2014/06/03/python-introduction-to-recursion/">Python: Introduction to Recursion</a></h2>
   
   <p>
@@ -601,50 +1000,6 @@ in
 <span class="categories">
   
     <a class='category' href='/blog/categories/nosql/'>NoSQL</a>, <a class='category' href='/blog/categories/redis/'>REDIS</a>
-  
-</span>
-
-
-  </span>
-
-  
-</article>
-
-            </div>
-          </div>
-        
-          
-          <div class="row">
-            <div class="col-md-offset-3 col-md-6">
-              <article>
-  <h2><a href="/blog/2014/05/22/hello-world-from-my-shiny-new-octopress-site/">Hello World From My Shiny New Octopress Site</a></h2>
-  
-  <p>
-    <p>Ahoy there, world!</p>
-
-
-  </p>
-  <span class="meta">
-    written 
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-05-22T16:47:28+00:00" pubdate data-updated="true">May 22<span>nd</span>, 2014</time>
-    
-
-in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/hello-world/'>Hello world</a>, <a class='category' href='/blog/categories/testing123/'>testing123</a>
   
 </span>
 

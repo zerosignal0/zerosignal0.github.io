@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
 <feed xmlns="http://www.w3.org/2005/Atom">
 
-  <title><![CDATA[Category: python | The blergh]]></title>
-  <link href="http://zerosignal0.github.io/blog/categories/python/atom.xml" rel="self"/>
+  <title><![CDATA[Category: recursion | The blergh]]></title>
+  <link href="http://zerosignal0.github.io/blog/categories/recursion/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
   <updated>2014-06-04T04:47:43+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
@@ -231,47 +231,6 @@ n=28, recursive exec time: 2.874248, iterative exec time:  0.000020, iterative p
 <p>In part three of this blog series I will cover in greater detail why the recursive solution is slower than the iterative solution.  I will also cover some tips / tricks that we can do to help tune the recursive function in order to make it perform much like its iterative counterpart.</p>
 
 <p>-g</p>
-]]></content>
-  </entry>
-  
-  <entry>
-    <title type="html"><![CDATA[Messaging queue showdown: Amazon SQS vs Celery(RabbitMQ)]]></title>
-    <link href="http://zerosignal0.github.io/blog/2014/05/25/messaging-queue-showdown-amazon-sqs-vs-celery-rabbitmq/"/>
-    <updated>2014-05-25T19:58:12+00:00</updated>
-    <id>http://zerosignal0.github.io/blog/2014/05/25/messaging-queue-showdown-amazon-sqs-vs-celery-rabbitmq</id>
-    <content type="html"><![CDATA[<p>As I am a previous engineer at Amazon AWS I have plenty of experience with AWS services and have exclusively leveraged SQS in many projects.  I have always had a mostly positive experience with Amazon AWS SQS <a href="https://aws.amazon.com/sqs/">https://aws.amazon.com/sqs/</a> however I have been curious for quite some time what the benefit of rabbitMQ <a href="http://www.rabbitmq.com/">http://www.rabbitmq.com/</a> could be vs. SQS. Message queuing is not a new concept and has existed for years within computer science/engineering see: <a href="http://en.wikipedia.org/wiki/Message_queue">http://en.wikipedia.org/wiki/Message_queue</a> if you are unfamiliar with the concept.</p>
-
-<p>*I would like to firstly point out that my experiences with both services have been with Python, however I did create a test instance and performed the same tests with Java yielding the same results.</p>
-
-<p>So I have to start out by saying that Amazons offering for queuing services is fantastic, relatively cheap and easy.  The community has also built some fantastic programmatic libraries to interact with the web services.  So now you may ask, why look at other services?  Well there can be some possible drawbacks of SQS as well that can cause you some problems depending on the situation.</p>
-
-<p>One drawback of SQS implementation is the need for polling of a message queue to determine if new messages have appeared.  This is a bit of an issue being as you must now model your application to perform a polling cycle in order to determine if new messages are available, and if so build the logic around consuming the message and popping it out of the queue.  You must also be mindful of queue settings that control such things as TTL, maximum message length and which endpoints (if multiple are used) the message is destined for.</p>
-
-<p>Beyond the small issue of having to be responsible for your own polling cycle, you are also billed based upon the number of requests to a queue.  I believe the breakdown on billing is something along the lines of 1 million requests == $100.00.  While this isn’t a ton of money it can still get quite costly if your distributed app has 100s of queue and must all be polled.  Especially if your messages come in bursts, in which case you have a lot of empty queue polling which penalizes you. There are different approaches you can take with SQS to apply back-off algorithms to queuing logic, but the penalty is delay in all other inter-dependent services cascades.</p>
-
-<p>So now enter RabbitMQ.</p>
-
-<p>RabbitMQ is a message queue system based on Erlang and conforming to AMQP (a standard and heavily used message queue protocol).  There are obvious overhead in the fact that you must host your own instances of RabbitMQ along with the infrastructure.  Also obvious reliability in multi-AZ redundancy will need to be considered unless you continue to host your instance within EC2 and configure appropriately.</p>
-
-<p>So now lets talk about the speed of RabbitMQ, I have one word to describe it.  FAST! My testing was performed within Amazon EC2 / AWS within the same region|AZ to be fair.  My test was simple, build a queue, spray 5,000 message to the queue as fast as possible, de-queue and discard message.   There are many different configurations  that RabbitMQ can support such as one-to-one, one-to-many, many-to-many, RPC.  In my example I simply used the default which is one-to-one.</p>
-
-<p>So now the “quarter mile” times between the two.</p>
-
-<p>Amazon AWS SQS: <br>
-Region: <b>IAD</b><br>
-Service: <b>SQS</b><br>
-Total time: <b>5:42 minutes:seconds</b><br></p>
-
-<p>RabbitMQ EC2:<br>
-Region: <b>IAD</b><br>
-Service: <b>EC2</b><br>
-Total time: <b>0:06 minutes:seconds</b><br></p>
-
-<p>What does this prove!?!</p>
-
-<p>Nothing really besides shoving a lot of messages down the pipe and pulling them out on the other side IS indeed faster using RabbitMQ.  This does not prove however that the actual service is “better” than SQS by any stretch of the imagination.  Both services provide pro/con, and SQS has a rich history of reliable service that affords a great mixture of safe queuing along with a rock solid infrastructure.</p>
-
-<p>On the other hand depending on the configuration of RabbitMQ you can gain a lot of these safeties with seemingly smaller hit in performance in terms of delivery times.  I hope to revisit this topic once I have more time to spend, hopefully this helps educate anyone that is posed with approaching these services in the future though.</p>
 ]]></content>
   </entry>
   
