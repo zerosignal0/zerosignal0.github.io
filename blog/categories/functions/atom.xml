@@ -4,7 +4,7 @@
   <title><![CDATA[Category: functions | The blergh]]></title>
   <link href="http://zerosignal0.github.io/blog/categories/functions/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-04T15:58:16+00:00</updated>
+  <updated>2014-06-04T15:59:08+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -44,10 +44,12 @@
 
 
 <p>The Fibonacci numbers are defined by the equation:
-<code>equation
-Fn = Fn-1 + Fn-2
-with F0 = 0 and F1 = 1
-</code></p>
+```text equation</p>
+
+<p>Fn = Fn-1 + Fn-2
+with F0 = 0 and F1 = 1</p>
+
+<p>```</p>
 
 <br><br>
 
