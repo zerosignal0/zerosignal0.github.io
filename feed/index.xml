@@ -4,7 +4,7 @@
   <title><![CDATA[The blergh]]></title>
   <link href="http://zerosignal0.github.io/feed" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-10T05:08:58+00:00</updated>
+  <updated>2014-06-10T05:11:03+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -18,13 +18,15 @@
     <link href="http://zerosignal0.github.io/blog/2014/06/10/python-intro-to-decorators/"/>
     <updated>2014-06-10T04:07:14+00:00</updated>
     <id>http://zerosignal0.github.io/blog/2014/06/10/python-intro-to-decorators</id>
-    <content type="html"><![CDATA[<p><b>Do you even decorate, bro? – Intro to decorators</b>
-When looking at the Python programming language, some of the most powerful and, unfortunately very under utilized &ldquo;macro&rdquo; design pattern within the language.  One of the reasons I believe this to be the case is that most explanations of decorators suck.  When you read the word &ldquo;decorator&rdquo; in regards to application development, most people generally think of <a href="http://www.amazon.com/gp/product/0201633612/ref=ase_bruceeckelA/">http://www.amazon.com/gp/product/0201633612/ref=ase_bruceeckelA/</a> .  While the “decorator” in Python can indeed be implemented in this fashion of design pattern, it is a very limited version of what decorators can actually accomplish.</p>
+    <content type="html"><![CDATA[<p><b>Do you even decorate, bro? – Intro to decorators</b></p>
+
+<p>When looking at the Python programming language, some of the most powerful and, unfortunately very under utilized &ldquo;macro&rdquo; design pattern within the language.  One of the reasons I believe this to be the case is that most explanations of decorators suck.  When you read the word &ldquo;decorator&rdquo; in regards to application development, most people generally think of <a href="http://www.amazon.com/gp/product/0201633612/ref=ase_bruceeckelA/">http://www.amazon.com/gp/product/0201633612/ref=ase_bruceeckelA/</a> .  While the “decorator” in Python can indeed be implemented in this fashion of design pattern, it is a very limited version of what decorators can actually accomplish.</p>
 
 <p>I believe that decorators can actually be thought of as more “macros”, than the classical design pattern aforementioned above.  <a href="http://en.wikipedia.org/wiki/Macro_">http://en.wikipedia.org/wiki/Macro_</a>(computer_science) , as defined by Wikipedia is “a rule or pattern that specifies how a certain input sequence (often a sequence of characters) should be mapped to a replacement output sequence (also often a sequence of characters) according to a defined procedure.”  In short, if you have some metadata that you want to apply to any class, function or object, dress it up with a decorator.</p>
 
-<p><b>Enough already, get to the example!</b>
-Decorators allow you to inject or modify code in functions or classes. Sounds a bit like Aspect-Oriented Programming (AOP) in Java, doesn&rsquo;t it? So lets say you have an action that you would like to perform at the entry point (execution) or exit point (return) of a class, function.  This is a prime example as when to use a decorator.</p>
+<p><b>Enough already, get to the example!</b></p>
+
+<p>Decorators allow you to inject or modify code in functions or classes. Sounds a bit like Aspect-Oriented Programming (AOP) in Java, doesn&rsquo;t it? So lets say you have an action that you would like to perform at the entry point (execution) or exit point (return) of a class, function.  This is a prime example as when to use a decorator.</p>
 
 <figure class='code'><figcaption><span>decorator example.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -35,51 +37,62 @@ Decorators allow you to inject or modify code in functions or classes. Sounds a 
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>note the &#8220;`python myscript
-@myDecorator # The @myDecorator denotes the the application of a decorator</p>
+<p>note the</p>
 
-<figure class='code'><figcaption><span>decorator example.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<figure class='code'><figcaption><span>myscript</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="nd">@myDecorator</span> <span class="c"># The @myDecorator denotes the the application of a decorator</span>
+</span></code></pre></td></tr></table></div></figure>
+
+
+<p><b>Function decorators</b></p>
+
+<p>So by affixing a @decoratorname on a line directly above a function (or object), denotes the application of the results of a decorator function. In the previous example, when the python parser passes over the “myFunction()”, “myFunction()” is compiled and is, in turn, passed to the “myDecorator code block.  This code block creates a function-like object that is ultimately what is returned when calling the “myFunction()” function.  Confusing?  Maybe this example will help.</p>
+
+<figure class='code'><figcaption><span>decorator example2.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
 <span class='line-number'>3</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="o">&lt;</span><span class="n">b</span><span class="o">&gt;</span><span class="n">Function</span> <span class="n">decorators</span><span class="o">&lt;/</span><span class="n">b</span><span class="o">&gt;</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">myDecorator</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func_object</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Hello from inside myDecorator.__init__()&quot;</span><span class="p">)</span>
+</span><span class='line'>        <span class="n">func_object</span><span class="p">()</span> <span class="c"># Execute func_object() to prove it has been executed.</span>
+</span><span class='line'>    <span class="k">def</span> <span class="nf">__call__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+</span><span class='line'>        <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Hello from inside myDecorator.__call__()&quot;</span><span class="p">)</span>
 </span><span class='line'>
-</span><span class='line'><span class="n">So</span> <span class="n">by</span> <span class="n">affixing</span> <span class="n">a</span> <span class="nd">@decoratorname</span> <span class="n">on</span> <span class="n">a</span> <span class="n">line</span> <span class="n">directly</span> <span class="n">above</span> <span class="n">a</span> <span class="n">function</span> <span class="p">(</span><span class="ow">or</span> <span class="nb">object</span><span class="p">),</span> <span class="n">denotes</span> <span class="n">the</span> <span class="n">application</span> <span class="n">of</span> <span class="n">the</span> <span class="n">results</span> <span class="n">of</span> <span class="n">a</span> <span class="n">decorator</span> <span class="n">function</span><span class="o">.</span> <span class="n">In</span> <span class="n">the</span> <span class="n">previous</span> <span class="n">example</span><span class="p">,</span> <span class="n">when</span> <span class="n">the</span> <span class="n">python</span> <span class="n">parser</span> <span class="n">passes</span> <span class="n">over</span> <span class="n">the</span> <span class="err">“</span><span class="n">myFunction</span><span class="p">()</span><span class="err">”</span><span class="p">,</span> <span class="err">“</span><span class="n">myFunction</span><span class="p">()</span><span class="err">”</span> <span class="ow">is</span> <span class="n">compiled</span> <span class="ow">and</span> <span class="ow">is</span><span class="p">,</span> <span class="ow">in</span> <span class="n">turn</span><span class="p">,</span> <span class="n">passed</span> <span class="n">to</span> <span class="n">the</span> <span class="err">“</span><span class="n">myDecorator</span> <span class="n">code</span> <span class="n">block</span><span class="o">.</span>  <span class="n">This</span> <span class="n">code</span> <span class="n">block</span> <span class="n">creates</span> <span class="n">a</span> <span class="n">function</span><span class="o">-</span><span class="n">like</span> <span class="nb">object</span> <span class="n">that</span> <span class="ow">is</span> <span class="n">ultimately</span> <span class="n">what</span> <span class="ow">is</span> <span class="n">returned</span> <span class="n">when</span> <span class="n">calling</span> <span class="n">the</span> <span class="err">“</span><span class="n">myFunction</span><span class="p">()</span><span class="err">”</span> <span class="n">function</span><span class="o">.</span>  <span class="n">Confusing</span><span class="err">?</span>  <span class="n">Maybe</span> <span class="n">this</span> <span class="n">example</span> <span class="n">will</span> <span class="n">help</span><span class="o">.</span>
+</span><span class='line'>
+</span><span class='line'><span class="nd">@myDecorator</span>
+</span><span class='line'><span class="k">def</span> <span class="nf">myFunction</span><span class="p">():</span>
+</span><span class='line'>    <span class="k">print</span> <span class="p">(</span><span class="s">&quot;Hello from inside myFunction()&quot;</span><span class="p">)</span>
+</span><span class='line'>
+</span><span class='line'>
+</span><span class='line'><span class="k">print</span> <span class="p">(</span><span class="s">&quot;Finished decorating myFunction()&quot;</span><span class="p">)</span>
+</span><span class='line'><span class="n">myFunction</span><span class="p">()</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p>python decorator example2.py</p>
+<p>When you execute the above code, your results will look something like this:</p>
 
-<p>class myDecorator(object):</p>
-
-<pre><code>def __init__(self, func_object):
-    print ("Hello from inside myDecorator.__init__()")
-    func_object() # Execute func_object() to prove it has been executed.
-def __call__(self):
-    print ("Hello from inside myDecorator.__call__()")
-</code></pre>
-
-<p>@myDecorator
-def myFunction():</p>
-
-<pre><code>print ("Hello from inside myFunction()")
-</code></pre>
-
-<p>print (&ldquo;Finished decorating myFunction()&rdquo;)
-myFunction()</p>
-
-<figure class='code'><figcaption><span>decorator example.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">When</span> <span class="n">you</span> <span class="n">execute</span> <span class="n">the</span> <span class="n">above</span> <span class="n">code</span><span class="p">,</span> <span class="n">your</span> <span class="n">results</span> <span class="n">will</span> <span class="n">look</span> <span class="n">something</span> <span class="n">like</span> <span class="n">this</span><span class="p">:</span>
+<figure class='code'><figcaption><span>output</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+</pre></td><td class='code'><pre><code class='text'><span class='line'>Hello from inside myDecorator.__init__()
+</span><span class='line'>Hello from inside myFunction()
+</span><span class='line'>Finished decorating myFunction()
+</span><span class='line'>Hello from inside myDecorator.__call__()
 </span></code></pre></td></tr></table></div></figure>
 
-
-<p>text output</p>
-
-<p>Hello from inside myDecorator.<strong>init</strong>()
-Hello from inside myFunction()
-Finished decorating myFunction()
-Hello from inside myDecorator.<strong>call</strong>()</p>
-
-<p>&#8220;`</p>
 
 <p>Note that the initialization of myDecorator(object) is executed when myFunction() is called. Due to the fact that we call “func_object()”, which is just myFunction() passed into the decorator class.<strong>init</strong> as a function object labeled “func_object”.  Generally, you&rsquo;ll pass the function object in the constructor and later use it in the <strong>call</strong>() method.</p>
 
