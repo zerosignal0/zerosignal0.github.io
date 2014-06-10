@@ -4,7 +4,7 @@
   <title><![CDATA[Category: design patterns | The blergh]]></title>
   <link href="http://zerosignal0.github.io/blog/categories/design-patterns/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-10T05:08:04+00:00</updated>
+  <updated>2014-06-10T05:08:58+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -18,17 +18,7 @@
     <link href="http://zerosignal0.github.io/blog/2014/06/10/python-intro-to-decorators/"/>
     <updated>2014-06-10T04:07:14+00:00</updated>
     <id>http://zerosignal0.github.io/blog/2014/06/10/python-intro-to-decorators</id>
-    <content type="html"><![CDATA[<hr />
-
-<p>layout: post
-authod: Gary Wright
-title: &ldquo;Python: Intro to decorators&rdquo;
-date: 2014-06-10 04:07:14 +0000
-comments: true</p>
-
-<h2>categories: [Python, decorators, design patterns]</h2>
-
-<p><b>Do you even decorate, bro? – Intro to decorators</b>
+    <content type="html"><![CDATA[<p><b>Do you even decorate, bro? – Intro to decorators</b>
 When looking at the Python programming language, some of the most powerful and, unfortunately very under utilized &ldquo;macro&rdquo; design pattern within the language.  One of the reasons I believe this to be the case is that most explanations of decorators suck.  When you read the word &ldquo;decorator&rdquo; in regards to application development, most people generally think of <a href="http://www.amazon.com/gp/product/0201633612/ref=ase_bruceeckelA/">http://www.amazon.com/gp/product/0201633612/ref=ase_bruceeckelA/</a> .  While the “decorator” in Python can indeed be implemented in this fashion of design pattern, it is a very limited version of what decorators can actually accomplish.</p>
 
 <p>I believe that decorators can actually be thought of as more “macros”, than the classical design pattern aforementioned above.  <a href="http://en.wikipedia.org/wiki/Macro_">http://en.wikipedia.org/wiki/Macro_</a>(computer_science) , as defined by Wikipedia is “a rule or pattern that specifies how a certain input sequence (often a sequence of characters) should be mapped to a replacement output sequence (also often a sequence of characters) according to a defined procedure.”  In short, if you have some metadata that you want to apply to any class, function or object, dress it up with a decorator.</p>
