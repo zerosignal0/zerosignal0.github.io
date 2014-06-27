@@ -4,7 +4,7 @@
   <title><![CDATA[The blergh]]></title>
   <link href="http://zerosignal0.github.io/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-27T01:37:07+00:00</updated>
+  <updated>2014-06-27T01:39:54+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -33,16 +33,18 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><b>Step 1:</b>
-If you don&rsquo;t already have a ~/.pyrc file, this command will create one for you, which is required for this trick to work.</p>
+<p><b>Step 1:</b></p>
+
+<p>If you don&rsquo;t already have a ~/.pyrc file, this command will create one for you, which is required for this trick to work.</p>
 
 <figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#&gt; touch ~/.pyrc</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><b>Step 2:</b>
-Now we will create a file within your homedir which will instruct python to bind tab completion at python launch.</p>
+<p><b>Step 2:</b></p>
+
+<p>Now we will create a file within your homedir which will instruct python to bind tab completion at python launch.</p>
 
 <figure class='code'><figcaption><span>~/.pyrc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -53,8 +55,9 @@ Now we will create a file within your homedir which will instruct python to bind
 </span></code></pre></td></tr></table></div></figure>
 
 
-<p><b>Step 3:</b>
-Now to ensure that your newly created ~/.pyrc file is executed each time python starts, add the following to your ~/.bashrc (or equiv. shell rc).</p>
+<p><b>Step 3:</b></p>
+
+<p>Now to ensure that your newly created ~/.pyrc file is executed each time python starts, add the following to your ~/.bashrc (or equiv. shell rc).</p>
 
 <figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>

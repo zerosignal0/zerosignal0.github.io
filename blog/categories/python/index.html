@@ -73,8 +73,9 @@ pip install rlcompleter</p>
 
 <p>```</p>
 
-<p><b>Step 1:</b>
-If you don&rsquo;t already have a ~/.pyrc file, this command will create one for you, which is required for this trick to work.</p>
+<p><b>Step 1:</b></p>
+
+<p>If you don&rsquo;t already have a ~/.pyrc file, this command will create one for you, which is required for this trick to work.</p>
 
 <p>```bash shell</p>
 
@@ -82,8 +83,9 @@ If you don&rsquo;t already have a ~/.pyrc file, this command will create one for
 
 <p>```</p>
 
-<p><b>Step 2:</b>
-Now we will create a file within your homedir which will instruct python to bind tab completion at python launch.</p>
+<p><b>Step 2:</b></p>
+
+<p>Now we will create a file within your homedir which will instruct python to bind tab completion at python launch.</p>
 
 <p>```python ~/.pyrc</p>
 
@@ -92,8 +94,9 @@ import readline
 readline.parse_and_bind(&ldquo;tab: complete&rdquo;)
 ```</p>
 
-<p><b>Step 3:</b>
-Now to ensure that your newly created ~/.pyrc file is executed each time python starts, add the following to your ~/.bashrc (or equiv. shell rc).</p>
+<p><b>Step 3:</b></p>
+
+<p>Now to ensure that your newly created ~/.pyrc file is executed each time python starts, add the following to your ~/.bashrc (or equiv. shell rc).</p>
 
 <p>```bash shell</p>
 

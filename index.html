@@ -103,16 +103,24 @@ The personal dumping grounds of an engineer, nerdist and human about me You have
 </span><span class='line'>pip install rlcompleter
 </span></code></pre></td></tr></table></div></figure></p>
 
-<p><b>Step 1:</b>
-If you don&rsquo;t already have a ~/.pyrc file, this command will create one for you, which is required for this trick to work.</p>
+<p><b>Step 1:</b></p>
+
+
+
+
+<p>If you don&rsquo;t already have a ~/.pyrc file, this command will create one for you, which is required for this trick to work.</p>
 
 
 <p><figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#&gt; touch ~/.pyrc</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
-<p><b>Step 2:</b>
-Now we will create a file within your homedir which will instruct python to bind tab completion at python launch.</p>
+<p><b>Step 2:</b></p>
+
+
+
+
+<p>Now we will create a file within your homedir which will instruct python to bind tab completion at python launch.</p>
 
 
 <p><figure class='code'><figcaption><span>~/.pyrc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
@@ -123,8 +131,12 @@ Now we will create a file within your homedir which will instruct python to bind
 </span><span class='line'><span class="n">readline</span><span class="o">.</span><span class="n">parse_and_bind</span><span class="p">(</span><span class="s">&quot;tab: complete&quot;</span><span class="p">)</span>
 </span></code></pre></td></tr></table></div></figure></p>
 
-<p><b>Step 3:</b>
-Now to ensure that your newly created ~/.pyrc file is executed each time python starts, add the following to your ~/.bashrc (or equiv. shell rc).</p>
+<p><b>Step 3:</b></p>
+
+
+
+
+<p>Now to ensure that your newly created ~/.pyrc file is executed each time python starts, add the following to your ~/.bashrc (or equiv. shell rc).</p>
 
 
 <p><figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
