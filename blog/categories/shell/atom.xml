@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+
+  <title><![CDATA[Category: shell | The blergh]]></title>
+  <link href="http://zerosignal0.github.io/blog/categories/shell/atom.xml" rel="self"/>
+  <link href="http://zerosignal0.github.io/"/>
+  <updated>2014-06-27T01:37:07+00:00</updated>
+  <id>http://zerosignal0.github.io/</id>
+  <author>
+    <name><![CDATA[Gary Wright]]></name>
+    
+  </author>
+  <generator uri="http://octopress.org/">Octopress</generator>
+
+  
+  <entry>
+    <title type="html"><![CDATA[Python: protip - Enable tab completion in python shell]]></title>
+    <link href="http://zerosignal0.github.io/blog/2014/06/27/python-protip-enable-tab-completion-in-python-shell/"/>
+    <updated>2014-06-27T00:37:41+00:00</updated>
+    <id>http://zerosignal0.github.io/blog/2014/06/27/python-protip-enable-tab-completion-in-python-shell</id>
+    <content type="html"><![CDATA[<p>I was recently chatting with someone that made the statement; &ldquo;The only reason why I use my text editor is because of tab completion, I am a minimalist pythonista.&rdquo;.  I responded with, &ldquo;If your a minimalist, why don&rsquo;t you have tab completion enabled in the interpreter?&rdquo;  They were unaware of the ability to enable tab completion within python.  Here is a my PSA on how to enable this behavior. :)</p>
+
+<p>By following these instructions you will be able to enable tab-completion within your python shell.</p>
+
+<p><b>Preperation steps:</b></p>
+
+<p>Before enabling tab-completion, you may need to install 2 python modules (rlcompleter, readline).  While these libraries are mostly included with python2.6+, some versions (OS X, for example), require the updated version to allow readline to function correctly.</p>
+
+<p>```bash shell</p>
+
+<p>pip install readline
+pip install rlcompleter</p>
+
+<p>```</p>
+
+<p><b>Step 1:</b>
+If you don&rsquo;t already have a ~/.pyrc file, this command will create one for you, which is required for this trick to work.</p>
+
+<p>```bash shell</p>
+
+<h1>> touch ~/.pyrc</h1>
+
+<p>```</p>
+
+<p><b>Step 2:</b>
+Now we will create a file within your homedir which will instruct python to bind tab completion at python launch.</p>
+
+<p>```python ~/.pyrc</p>
+
+<p>import rlcompleter
+import readline
+readline.parse_and_bind(&ldquo;tab: complete&rdquo;)
+```</p>
+
+<p><b>Step 3:</b>
+Now to ensure that your newly created ~/.pyrc file is executed each time python starts, add the following to your ~/.bashrc (or equiv. shell rc).</p>
+
+<p>```bash shell</p>
+
+<h1>> export PYTHONSTARTUP=&ldquo;[PATH TO PYRC FILE]/.pyrc&rdquo;</h1>
+
+<p>*OR TO MAKE THE CHANGE PERSIST TERMINAL CLOSURE</p>
+
+<h1>> echo export PYTHONSTARTUP=&ldquo;[PATH TO PYRC FILE].pyrc&rdquo; >> ~/.bashrc</h1>
+
+<p>```</p>
+
+<p>Now to test, execute the following:</p>
+
+<p>```bash shell</p>
+
+<h1>> source ~/.bashrc   #reloads your ~/.bashrc file (if you added the entry to your ~/.bashrc, else ignore)</h1>
+
+<p>```</p>
+
+<p>Now we will open the actual python shell, and view the tab completion goodness.</p>
+
+<p>```python shell</p>
+
+<p>Python 2.7.6 (v2.7.6:3a1db0d2747e, Nov 10 2013, 00:42:54)
+[GCC 4.2.1 (Apple Inc. build 5666) (dot 3)] on darwin
+Type &ldquo;help&rdquo;, &ldquo;copyright&rdquo;, &ldquo;credits&rdquo; or &ldquo;license&rdquo; for more information.</p>
+
+<blockquote><blockquote><blockquote><p>import os
+os.
+Display all 234 possibilities? (y or n)
+os.EX_CANTCREAT             os.<strong>class</strong>(               os.fchdir(                  os.putenv(
+os.EX_CONFIG                os.<strong>delattr</strong>(             os.fchmod(                  os.read(
+os.EX_DATAERR               os.<strong>dict</strong>                 os.fchown(                  os.readlink(
+os.EX_IOERR                 os.<strong>doc</strong>                  os.fdopen(                  os.remove(
+os.EX_NOHOST                os.<strong>file</strong>                 os.fork(                    os.removedirs(
+os.EX_NOINPUT               os.<strong>format</strong>(              os.forkpty(                 os.rename(
+os.EX_NOPERM                os.<strong>getattribute</strong>(        os.fpathconf(               os.renames(
+os.EX_NOUSER                os.<strong>hash</strong>(                os.fstat(                   os.rmdir(
+os.EX_OK                    os.<strong>init</strong>(                os.fstatvfs(                os.sep
+os.EX_OSERR                 os.<strong>name</strong>                 os.fsync(                   os.setegid(
+os.EX_OSFILE                os.<strong>new</strong>(                 os.ftruncate(               os.seteuid(
+os.EX_PROTOCOL              os.<strong>package</strong>              os.getcwd(                  os.setgid(
+os.EX_SOFTWARE              os.<strong>reduce</strong>(              os.getcwdu(                 os.setgroups(
+os.EX_TEMPFAIL              os.<strong>reduce_ex</strong>(           os.getegid(                 os.setpgid(
+os.EX_UNAVAILABLE           os.<strong>repr</strong>(                os.getenv(                  os.setpgrp(
+os.EX_USAGE                 os.<strong>setattr</strong>(             os.geteuid(                 os.setregid(
+os.F_OK                     os.<strong>sizeof</strong>(              os.getgid(                  os.setreuid(
+os.NGROUPS_MAX              os.<strong>str</strong>(                 os.getgroups(               os.setsid(
+os.O_APPEND                 os.<strong>subclasshook</strong>(        os.getloadavg(              os.setuid(
+os.O_ASYNC                  os.<em>copy_reg                os.getlogin(                os.spawnl(
+os.O_CREAT                  os.</em>execvpe(                os.getpgid(                 os.spawnle(
+os.O_DIRECTORY              os.<em>exists(                 os.getpgrp(                 os.spawnlp(
+os.O_DSYNC                  os.</em>exit(                   os.getpid(                  os.spawnlpe(
+os.O_EXCL                   os.<em>get_exports_list(       os.getppid(                 os.spawnv(
+os.O_EXLOCK                 os.</em>make_stat_result(       os.getsid(                  os.spawnve(
+os.O_NDELAY                 os.<em>make_statvfs_result(    os.getuid(                  os.spawnvp(
+os.O_NOCTTY                 os.</em>pickle_stat_result(     os.initgroups(              os.spawnvpe(
+os.O_NOFOLLOW               os.<em>pickle_statvfs_result(  os.isatty(                  os.stat(
+os.O_NONBLOCK               os.</em>spawnvef(               os.kill(                    os.stat_float_times(
+os.O_RDONLY                 os.abort(                   os.killpg(                  os.stat_result(
+os.O_RDWR                   os.access(                  os.lchflags(                os.statvfs(
+os.O_SHLOCK                 os.altsep                   os.lchmod(                  os.statvfs_result(
+os.O_SYNC                   os.chdir(                   os.lchown(                  os.strerror(
+os.O_TRUNC                  os.chflags(                 os.linesep                  os.symlink(
+os.O_WRONLY                 os.chmod(                   os.link(                    os.sys
+os.P_NOWAIT                 os.chown(                   os.listdir(                 os.sysconf(
+os.P_NOWAITO                os.chroot(                  os.lseek(                   os.sysconf_names
+os.P_WAIT                   os.close(                   os.lstat(                   os.system(
+os.R_OK                     os.closerange(              os.major(                   os.tcgetpgrp(
+os.SEEK_CUR                 os.confstr(                 os.makedev(                 os.tcsetpgrp(
+os.SEEK_END                 os.confstr_names            os.makedirs(                os.tempnam(
+os.SEEK_SET                 os.ctermid(                 os.minor(                   os.times(
+os.TMP_MAX                  os.curdir                   os.mkdir(                   os.tmpfile(
+os.UserDict                 os.defpath                  os.mkfifo(                  os.tmpnam(
+os.WCONTINUED               os.devnull                  os.mknod(                   os.ttyname(
+os.WCOREDUMP(               os.dup(                     os.name                     os.umask(
+os.WEXITSTATUS(             os.dup2(                    os.nice(                    os.uname(
+os.WIFCONTINUED(            os.environ                  os.open(                    os.unlink(
+os.WIFEXITED(               os.errno                    os.openpty(                 os.unsetenv(
+os.WIFSIGNALED(             os.error(                   os.pardir                   os.urandom(
+os.WIFSTOPPED(              os.execl(                   os.path                     os.utime(
+os.WNOHANG                  os.execle(                  os.pathconf(                os.wait(
+os.WSTOPSIG(                os.execlp(                  os.pathconf_names           os.wait3(
+os.WTERMSIG(                os.execlpe(                 os.pathsep                  os.wait4(
+os.WUNTRACED                os.execv(                   os.pipe(                    os.waitpid(
+os.W_OK                     os.execve(                  os.popen(                   os.walk(
+os.X_OK                     os.execvp(                  os.popen2(                  os.write(
+os._Environ                 os.execvpe(                 os.popen3(                <br/>
+os.<strong>all</strong>                  os.extsep                   os.popen4(                <br/>
+os.</p></blockquote></blockquote></blockquote>
+
+<p>```</p>
+
+<p>In the above example, I have imported the &ldquo;os&rdquo; module, typed &ldquo;os.&rdquo; and have pressed <tab>.  Now all of the possible matched object names available within the module are shown.  viola, python tab completion enabled.</p>
+]]></content>
+  </entry>
+  
+</feed>

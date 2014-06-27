@@ -76,6 +76,254 @@ The personal dumping grounds of an engineer, nerdist and human about me You have
           <div class="row">
             <div class="col-md-offset-3 col-md-6">
               <article>
+  <h2><a href="/blog/2014/06/27/python-protip-enable-tab-completion-in-python-shell/">Python: Protip - Enable Tab Completion in Python Shell</a></h2>
+  
+  <p>
+    <p>I was recently chatting with someone that made the statement; &ldquo;The only reason why I use my text editor is because of tab completion, I am a minimalist pythonista.&rdquo;.  I responded with, &ldquo;If your a minimalist, why don&rsquo;t you have tab completion enabled in the interpreter?&rdquo;  They were unaware of the ability to enable tab completion within python.  Here is a my PSA on how to enable this behavior. :)</p>
+
+
+
+
+<p>By following these instructions you will be able to enable tab-completion within your python shell.</p>
+
+
+
+
+<p><b>Preperation steps:</b></p>
+
+
+
+
+<p>Before enabling tab-completion, you may need to install 2 python modules (rlcompleter, readline).  While these libraries are mostly included with python2.6+, some versions (OS X, for example), require the updated version to allow readline to function correctly.</p>
+
+
+<p><figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'>pip install readline
+</span><span class='line'>pip install rlcompleter
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><b>Step 1:</b>
+If you don&rsquo;t already have a ~/.pyrc file, this command will create one for you, which is required for this trick to work.</p>
+
+
+<p><figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#&gt; touch ~/.pyrc</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><b>Step 2:</b>
+Now we will create a file within your homedir which will instruct python to bind tab completion at python launch.</p>
+
+
+<p><figure class='code'><figcaption><span>~/.pyrc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">rlcompleter</span>
+</span><span class='line'><span class="kn">import</span> <span class="nn">readline</span>
+</span><span class='line'><span class="n">readline</span><span class="o">.</span><span class="n">parse_and_bind</span><span class="p">(</span><span class="s">&quot;tab: complete&quot;</span><span class="p">)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p><b>Step 3:</b>
+Now to ensure that your newly created ~/.pyrc file is executed each time python starts, add the following to your ~/.bashrc (or equiv. shell rc).</p>
+
+
+<p><figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#&gt; export PYTHONSTARTUP=&quot;[PATH TO PYRC FILE]/.pyrc&quot;</span>
+</span><span class='line'>
+</span><span class='line'>*OR TO MAKE THE CHANGE PERSIST TERMINAL CLOSURE
+</span><span class='line'>
+</span><span class='line'><span class="c">#&gt; echo export PYTHONSTARTUP=&quot;[PATH TO PYRC FILE].pyrc&quot; &gt;&gt; ~/.bashrc</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Now to test, execute the following:</p>
+
+
+<p><figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+</pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#&gt; source ~/.bashrc   #reloads your ~/.bashrc file (if you added the entry to your ~/.bashrc, else ignore)</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>Now we will open the actual python shell, and view the tab completion goodness.</p>
+
+
+<p><figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
+<span class='line-number'>2</span>
+<span class='line-number'>3</span>
+<span class='line-number'>4</span>
+<span class='line-number'>5</span>
+<span class='line-number'>6</span>
+<span class='line-number'>7</span>
+<span class='line-number'>8</span>
+<span class='line-number'>9</span>
+<span class='line-number'>10</span>
+<span class='line-number'>11</span>
+<span class='line-number'>12</span>
+<span class='line-number'>13</span>
+<span class='line-number'>14</span>
+<span class='line-number'>15</span>
+<span class='line-number'>16</span>
+<span class='line-number'>17</span>
+<span class='line-number'>18</span>
+<span class='line-number'>19</span>
+<span class='line-number'>20</span>
+<span class='line-number'>21</span>
+<span class='line-number'>22</span>
+<span class='line-number'>23</span>
+<span class='line-number'>24</span>
+<span class='line-number'>25</span>
+<span class='line-number'>26</span>
+<span class='line-number'>27</span>
+<span class='line-number'>28</span>
+<span class='line-number'>29</span>
+<span class='line-number'>30</span>
+<span class='line-number'>31</span>
+<span class='line-number'>32</span>
+<span class='line-number'>33</span>
+<span class='line-number'>34</span>
+<span class='line-number'>35</span>
+<span class='line-number'>36</span>
+<span class='line-number'>37</span>
+<span class='line-number'>38</span>
+<span class='line-number'>39</span>
+<span class='line-number'>40</span>
+<span class='line-number'>41</span>
+<span class='line-number'>42</span>
+<span class='line-number'>43</span>
+<span class='line-number'>44</span>
+<span class='line-number'>45</span>
+<span class='line-number'>46</span>
+<span class='line-number'>47</span>
+<span class='line-number'>48</span>
+<span class='line-number'>49</span>
+<span class='line-number'>50</span>
+<span class='line-number'>51</span>
+<span class='line-number'>52</span>
+<span class='line-number'>53</span>
+<span class='line-number'>54</span>
+<span class='line-number'>55</span>
+<span class='line-number'>56</span>
+<span class='line-number'>57</span>
+<span class='line-number'>58</span>
+<span class='line-number'>59</span>
+<span class='line-number'>60</span>
+<span class='line-number'>61</span>
+<span class='line-number'>62</span>
+<span class='line-number'>63</span>
+<span class='line-number'>64</span>
+<span class='line-number'>65</span>
+<span class='line-number'>66</span>
+</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="n">Python</span> <span class="mf">2.7</span><span class="o">.</span><span class="mi">6</span> <span class="p">(</span><span class="n">v2</span><span class="o">.</span><span class="mf">7.6</span><span class="p">:</span><span class="mi">3</span><span class="n">a1db0d2747e</span><span class="p">,</span> <span class="n">Nov</span> <span class="mi">10</span> <span class="mi">2013</span><span class="p">,</span> <span class="mo">00</span><span class="p">:</span><span class="mi">42</span><span class="p">:</span><span class="mi">54</span><span class="p">)</span>
+</span><span class='line'><span class="p">[</span><span class="n">GCC</span> <span class="mf">4.2</span><span class="o">.</span><span class="mi">1</span> <span class="p">(</span><span class="n">Apple</span> <span class="n">Inc</span><span class="o">.</span> <span class="n">build</span> <span class="mi">5666</span><span class="p">)</span> <span class="p">(</span><span class="n">dot</span> <span class="mi">3</span><span class="p">)]</span> <span class="n">on</span> <span class="n">darwin</span>
+</span><span class='line'><span class="n">Type</span> <span class="s">&quot;help&quot;</span><span class="p">,</span> <span class="s">&quot;copyright&quot;</span><span class="p">,</span> <span class="s">&quot;credits&quot;</span> <span class="ow">or</span> <span class="s">&quot;license&quot;</span> <span class="k">for</span> <span class="n">more</span> <span class="n">information</span><span class="o">.</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">os</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span>
+</span><span class='line'><span class="n">Display</span> <span class="nb">all</span> <span class="mi">234</span> <span class="n">possibilities</span><span class="err">?</span> <span class="p">(</span><span class="n">y</span> <span class="ow">or</span> <span class="n">n</span><span class="p">)</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_CANTCREAT</span>             <span class="n">os</span><span class="o">.</span><span class="n"><strong>class</strong></span><span class="p">(</span>               <span class="n">os</span><span class="o">.</span><span class="n">fchdir</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">putenv</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_CONFIG</span>                <span class="n">os</span><span class="o">.</span><span class="n"><strong>delattr</strong></span><span class="p">(</span>             <span class="n">os</span><span class="o">.</span><span class="n">fchmod</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">read</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_DATAERR</span>               <span class="n">os</span><span class="o">.</span><span class="n"><strong>dict</strong></span>                 <span class="n">os</span><span class="o">.</span><span class="n">fchown</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">readlink</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_IOERR</span>                 <span class="n">os</span><span class="o">.</span><span class="n"><strong>doc</strong></span>                  <span class="n">os</span><span class="o">.</span><span class="n">fdopen</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_NOHOST</span>                <span class="n">os</span><span class="o">.</span><span class="n"><strong>file</strong></span>                 <span class="n">os</span><span class="o">.</span><span class="n">fork</span><span class="p">(</span>                    <span class="n">os</span><span class="o">.</span><span class="n">removedirs</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_NOINPUT</span>               <span class="n">os</span><span class="o">.</span><span class="n"><strong>format</strong></span><span class="p">(</span>              <span class="n">os</span><span class="o">.</span><span class="n">forkpty</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_NOPERM</span>                <span class="n">os</span><span class="o">.</span><span class="n"><strong>getattribute</strong></span><span class="p">(</span>        <span class="n">os</span><span class="o">.</span><span class="n">fpathconf</span><span class="p">(</span>               <span class="n">os</span><span class="o">.</span><span class="n">renames</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_NOUSER</span>                <span class="n">os</span><span class="o">.</span><span class="n"><strong>hash</strong></span><span class="p">(</span>                <span class="n">os</span><span class="o">.</span><span class="n">fstat</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">rmdir</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_OK</span>                    <span class="n">os</span><span class="o">.</span><span class="n"><strong>init</strong></span><span class="p">(</span>                <span class="n">os</span><span class="o">.</span><span class="n">fstatvfs</span><span class="p">(</span>                <span class="n">os</span><span class="o">.</span><span class="n">sep</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_OSERR</span>                 <span class="n">os</span><span class="o">.</span><span class="n"><strong>name</strong></span>                 <span class="n">os</span><span class="o">.</span><span class="n">fsync</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">setegid</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_OSFILE</span>                <span class="n">os</span><span class="o">.</span><span class="n"><strong>new</strong></span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">ftruncate</span><span class="p">(</span>               <span class="n">os</span><span class="o">.</span><span class="n">seteuid</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_PROTOCOL</span>              <span class="n">os</span><span class="o">.</span><span class="n"><strong>package</strong></span>              <span class="n">os</span><span class="o">.</span><span class="n">getcwd</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">setgid</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_SOFTWARE</span>              <span class="n">os</span><span class="o">.</span><span class="n"><strong>reduce</strong></span><span class="p">(</span>              <span class="n">os</span><span class="o">.</span><span class="n">getcwdu</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">setgroups</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_TEMPFAIL</span>              <span class="n">os</span><span class="o">.</span><span class="n"><strong>reduce_ex</strong></span><span class="p">(</span>           <span class="n">os</span><span class="o">.</span><span class="n">getegid</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">setpgid</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_UNAVAILABLE</span>           <span class="n">os</span><span class="o">.</span><span class="n"><strong>repr</strong></span><span class="p">(</span>                <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">setpgrp</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">EX_USAGE</span>                 <span class="n">os</span><span class="o">.</span><span class="n"><strong>setattr</strong></span><span class="p">(</span>             <span class="n">os</span><span class="o">.</span><span class="n">geteuid</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">setregid</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">F_OK</span>                     <span class="n">os</span><span class="o">.</span><span class="n"><strong>sizeof</strong></span><span class="p">(</span>              <span class="n">os</span><span class="o">.</span><span class="n">getgid</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">setreuid</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">NGROUPS_MAX</span>              <span class="n">os</span><span class="o">.</span><span class="n"><strong>str</strong></span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">getgroups</span><span class="p">(</span>               <span class="n">os</span><span class="o">.</span><span class="n">setsid</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_APPEND</span>                 <span class="n">os</span><span class="o">.</span><span class="n"><strong>subclasshook</strong></span><span class="p">(</span>        <span class="n">os</span><span class="o">.</span><span class="n">getloadavg</span><span class="p">(</span>              <span class="n">os</span><span class="o">.</span><span class="n">setuid</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_ASYNC</span>                  <span class="n">os</span><span class="o">.</span><span class="n"><em>copy_reg</span>                <span class="n">os</span><span class="o">.</span><span class="n">getlogin</span><span class="p">(</span>                <span class="n">os</span><span class="o">.</span><span class="n">spawnl</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_CREAT</span>                  <span class="n">os</span><span class="o">.</span><span class="n"></em>execvpe</span><span class="p">(</span>                <span class="n">os</span><span class="o">.</span><span class="n">getpgid</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">spawnle</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_DIRECTORY</span>              <span class="n">os</span><span class="o">.</span><span class="n"><em>exists</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">getpgrp</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">spawnlp</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_DSYNC</span>                  <span class="n">os</span><span class="o">.</span><span class="n"></em>exit</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">getpid</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">spawnlpe</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_EXCL</span>                   <span class="n">os</span><span class="o">.</span><span class="n"><em>get_exports_list</span><span class="p">(</span>       <span class="n">os</span><span class="o">.</span><span class="n">getppid</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">spawnv</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_EXLOCK</span>                 <span class="n">os</span><span class="o">.</span><span class="n"></em>make_stat_result</span><span class="p">(</span>       <span class="n">os</span><span class="o">.</span><span class="n">getsid</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">spawnve</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_NDELAY</span>                 <span class="n">os</span><span class="o">.</span><span class="n"><em>make_statvfs_result</span><span class="p">(</span>    <span class="n">os</span><span class="o">.</span><span class="n">getuid</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">spawnvp</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_NOCTTY</span>                 <span class="n">os</span><span class="o">.</span><span class="n"></em>pickle_stat_result</span><span class="p">(</span>     <span class="n">os</span><span class="o">.</span><span class="n">initgroups</span><span class="p">(</span>              <span class="n">os</span><span class="o">.</span><span class="n">spawnvpe</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_NOFOLLOW</span>               <span class="n">os</span><span class="o">.</span><span class="n"><em>pickle_statvfs_result</span><span class="p">(</span>  <span class="n">os</span><span class="o">.</span><span class="n">isatty</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">stat</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_NONBLOCK</span>               <span class="n">os</span><span class="o">.</span><span class="n"></em>spawnvef</span><span class="p">(</span>               <span class="n">os</span><span class="o">.</span><span class="n">kill</span><span class="p">(</span>                    <span class="n">os</span><span class="o">.</span><span class="n">stat_float_times</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_RDONLY</span>                 <span class="n">os</span><span class="o">.</span><span class="n">abort</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">killpg</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">stat_result</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_RDWR</span>                   <span class="n">os</span><span class="o">.</span><span class="n">access</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">lchflags</span><span class="p">(</span>                <span class="n">os</span><span class="o">.</span><span class="n">statvfs</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_SHLOCK</span>                 <span class="n">os</span><span class="o">.</span><span class="n">altsep</span>                   <span class="n">os</span><span class="o">.</span><span class="n">lchmod</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">statvfs_result</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_SYNC</span>                   <span class="n">os</span><span class="o">.</span><span class="n">chdir</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">lchown</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">strerror</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_TRUNC</span>                  <span class="n">os</span><span class="o">.</span><span class="n">chflags</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">linesep</span>                  <span class="n">os</span><span class="o">.</span><span class="n">symlink</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">O_WRONLY</span>                 <span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">link</span><span class="p">(</span>                    <span class="n">os</span><span class="o">.</span><span class="n">sys</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">P_NOWAIT</span>                 <span class="n">os</span><span class="o">.</span><span class="n">chown</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">listdir</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">sysconf</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">P_NOWAITO</span>                <span class="n">os</span><span class="o">.</span><span class="n">chroot</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">lseek</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">sysconf_names</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">P_WAIT</span>                   <span class="n">os</span><span class="o">.</span><span class="n">close</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">lstat</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">system</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">R_OK</span>                     <span class="n">os</span><span class="o">.</span><span class="n">closerange</span><span class="p">(</span>              <span class="n">os</span><span class="o">.</span><span class="n">major</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">tcgetpgrp</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">SEEK_CUR</span>                 <span class="n">os</span><span class="o">.</span><span class="n">confstr</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">makedev</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">tcsetpgrp</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">SEEK_END</span>                 <span class="n">os</span><span class="o">.</span><span class="n">confstr_names</span>            <span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span>                <span class="n">os</span><span class="o">.</span><span class="n">tempnam</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">SEEK_SET</span>                 <span class="n">os</span><span class="o">.</span><span class="n">ctermid</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">minor</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">times</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">TMP_MAX</span>                  <span class="n">os</span><span class="o">.</span><span class="n">curdir</span>                   <span class="n">os</span><span class="o">.</span><span class="n">mkdir</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">tmpfile</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">UserDict</span>                 <span class="n">os</span><span class="o">.</span><span class="n">defpath</span>                  <span class="n">os</span><span class="o">.</span><span class="n">mkfifo</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">tmpnam</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">WCONTINUED</span>               <span class="n">os</span><span class="o">.</span><span class="n">devnull</span>                  <span class="n">os</span><span class="o">.</span><span class="n">mknod</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">ttyname</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">WCOREDUMP</span><span class="p">(</span>               <span class="n">os</span><span class="o">.</span><span class="n">dup</span><span class="p">(</span>                     <span class="n">os</span><span class="o">.</span><span class="n">name</span>                     <span class="n">os</span><span class="o">.</span><span class="n">umask</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">WEXITSTATUS</span><span class="p">(</span>             <span class="n">os</span><span class="o">.</span><span class="n">dup2</span><span class="p">(</span>                    <span class="n">os</span><span class="o">.</span><span class="n">nice</span><span class="p">(</span>                    <span class="n">os</span><span class="o">.</span><span class="n">uname</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">WIFCONTINUED</span><span class="p">(</span>            <span class="n">os</span><span class="o">.</span><span class="n">environ</span>                  <span class="n">os</span><span class="o">.</span><span class="n">open</span><span class="p">(</span>                    <span class="n">os</span><span class="o">.</span><span class="n">unlink</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">WIFEXITED</span><span class="p">(</span>               <span class="n">os</span><span class="o">.</span><span class="n">errno</span>                    <span class="n">os</span><span class="o">.</span><span class="n">openpty</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">unsetenv</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">WIFSIGNALED</span><span class="p">(</span>             <span class="n">os</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">pardir</span>                   <span class="n">os</span><span class="o">.</span><span class="n">urandom</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">WIFSTOPPED</span><span class="p">(</span>              <span class="n">os</span><span class="o">.</span><span class="n">execl</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">path</span>                     <span class="n">os</span><span class="o">.</span><span class="n">utime</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">WNOHANG</span>                  <span class="n">os</span><span class="o">.</span><span class="n">execle</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">pathconf</span><span class="p">(</span>                <span class="n">os</span><span class="o">.</span><span class="n">wait</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">WSTOPSIG</span><span class="p">(</span>                <span class="n">os</span><span class="o">.</span><span class="n">execlp</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">pathconf_names</span>           <span class="n">os</span><span class="o">.</span><span class="n">wait3</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">WTERMSIG</span><span class="p">(</span>                <span class="n">os</span><span class="o">.</span><span class="n">execlpe</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">pathsep</span>                  <span class="n">os</span><span class="o">.</span><span class="n">wait4</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">WUNTRACED</span>                <span class="n">os</span><span class="o">.</span><span class="n">execv</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">pipe</span><span class="p">(</span>                    <span class="n">os</span><span class="o">.</span><span class="n">waitpid</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">W_OK</span>                     <span class="n">os</span><span class="o">.</span><span class="n">execve</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">popen</span><span class="p">(</span>                   <span class="n">os</span><span class="o">.</span><span class="n">walk</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">X_OK</span>                     <span class="n">os</span><span class="o">.</span><span class="n">execvp</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">popen2</span><span class="p">(</span>                  <span class="n">os</span><span class="o">.</span><span class="n">write</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">_Environ</span>                 <span class="n">os</span><span class="o">.</span><span class="n">execvpe</span><span class="p">(</span>                 <span class="n">os</span><span class="o">.</span><span class="n">popen3</span><span class="p">(</span>
+</span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n"><strong>all</strong></span>                  <span class="n">os</span><span class="o">.</span><span class="n">extsep</span>                   <span class="n">os</span><span class="o">.</span><span class="n">popen4</span><span class="p">(</span>
+</span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span>
+</span></code></pre></td></tr></table></div></figure></p>
+
+<p>In the above example, I have imported the &ldquo;os&rdquo; module, typed &ldquo;os.&rdquo; and have pressed <tab>.  Now all of the possible matched object names available within the module are shown.  viola, python tab completion enabled.</p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-06-27T00:37:41+00:00" pubdate data-updated="true">Jun 27<span>th</span>, 2014</time>
+    
+
+in
+<span class="categories">
+  
+    <a class='category' href='/blog/categories/python/'>python</a>, <a class='category' href='/blog/categories/shell/'>shell</a>, <a class='category' href='/blog/categories/tab-complete/'>tab complete</a>
+  
+</span>
+
+
+  </span>
+
+  
+</article>
+
+            </div>
+          </div>
+        
+          
+          <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+              <article>
   <h2><a href="/blog/2014/06/10/python-intro-to-decorators/">Python: Intro to Decorators</a></h2>
   
   <p>
@@ -998,121 +1246,6 @@ This approach is a bit more complex and makes use of a couple of different modul
 
 <time datetime="2014-05-31T23:22:15+00:00" pubdate data-updated="true">May 31<span>st</span>, 2014</time>
     
-
-
-  </span>
-
-  
-</article>
-
-            </div>
-          </div>
-        
-          
-          <div class="row">
-            <div class="col-md-offset-3 col-md-6">
-              <article>
-  <h2><a href="/blog/2014/05/25/messaging-queue-showdown-amazon-sqs-vs-celery-rabbitmq/">Messaging Queue Showdown: Amazon SQS vs Celery(RabbitMQ)</a></h2>
-  
-  <p>
-    <p>As I am a previous engineer at Amazon AWS I have plenty of experience with AWS services and have exclusively leveraged SQS in many projects.  I have always had a mostly positive experience with Amazon AWS SQS <a href="https://aws.amazon.com/sqs/">https://aws.amazon.com/sqs/</a> however I have been curious for quite some time what the benefit of rabbitMQ <a href="http://www.rabbitmq.com/">http://www.rabbitmq.com/</a> could be vs. SQS. Message queuing is not a new concept and has existed for years within computer science/engineering see: <a href="http://en.wikipedia.org/wiki/Message_queue">http://en.wikipedia.org/wiki/Message_queue</a> if you are unfamiliar with the concept.</p>
-
-
-
-
-<p>*I would like to firstly point out that my experiences with both services have been with Python, however I did create a test instance and performed the same tests with Java yielding the same results.</p>
-
-
-
-
-<p>So I have to start out by saying that Amazons offering for queuing services is fantastic, relatively cheap and easy.  The community has also built some fantastic programmatic libraries to interact with the web services.  So now you may ask, why look at other services?  Well there can be some possible drawbacks of SQS as well that can cause you some problems depending on the situation.</p>
-
-
-
-
-<p>One drawback of SQS implementation is the need for polling of a message queue to determine if new messages have appeared.  This is a bit of an issue being as you must now model your application to perform a polling cycle in order to determine if new messages are available, and if so build the logic around consuming the message and popping it out of the queue.  You must also be mindful of queue settings that control such things as TTL, maximum message length and which endpoints (if multiple are used) the message is destined for.</p>
-
-
-
-
-<p>Beyond the small issue of having to be responsible for your own polling cycle, you are also billed based upon the number of requests to a queue.  I believe the breakdown on billing is something along the lines of 1 million requests == $100.00.  While this isn’t a ton of money it can still get quite costly if your distributed app has 100s of queue and must all be polled.  Especially if your messages come in bursts, in which case you have a lot of empty queue polling which penalizes you. There are different approaches you can take with SQS to apply back-off algorithms to queuing logic, but the penalty is delay in all other inter-dependent services cascades.</p>
-
-
-
-
-<p>So now enter RabbitMQ.</p>
-
-
-
-
-<p>RabbitMQ is a message queue system based on Erlang and conforming to AMQP (a standard and heavily used message queue protocol).  There are obvious overhead in the fact that you must host your own instances of RabbitMQ along with the infrastructure.  Also obvious reliability in multi-AZ redundancy will need to be considered unless you continue to host your instance within EC2 and configure appropriately.</p>
-
-
-
-
-<p>So now lets talk about the speed of RabbitMQ, I have one word to describe it.  FAST! My testing was performed within Amazon EC2 / AWS within the same region|AZ to be fair.  My test was simple, build a queue, spray 5,000 message to the queue as fast as possible, de-queue and discard message.   There are many different configurations  that RabbitMQ can support such as one-to-one, one-to-many, many-to-many, RPC.  In my example I simply used the default which is one-to-one.</p>
-
-
-
-
-<p>So now the “quarter mile” times between the two.</p>
-
-
-
-
-<p>Amazon AWS SQS: <br>
-Region: <b>IAD</b><br>
-Service: <b>SQS</b><br>
-Total time: <b>5:42 minutes:seconds</b><br></p>
-
-
-
-
-<p>RabbitMQ EC2:<br>
-Region: <b>IAD</b><br>
-Service: <b>EC2</b><br>
-Total time: <b>0:06 minutes:seconds</b><br></p>
-
-
-
-
-<p>What does this prove!?!</p>
-
-
-
-
-<p>Nothing really besides shoving a lot of messages down the pipe and pulling them out on the other side IS indeed faster using RabbitMQ.  This does not prove however that the actual service is “better” than SQS by any stretch of the imagination.  Both services provide pro/con, and SQS has a rich history of reliable service that affords a great mixture of safe queuing along with a rock solid infrastructure.</p>
-
-
-
-
-<p>On the other hand depending on the configuration of RabbitMQ you can gain a lot of these safeties with seemingly smaller hit in performance in terms of delivery times.  I hope to revisit this topic once I have more time to spend, hopefully this helps educate anyone that is posed with approaching these services in the future though.</p>
-
-
-  </p>
-  <span class="meta">
-    written 
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-05-25T19:58:12+00:00" pubdate data-updated="true">May 25<span>th</span>, 2014</time>
-    
-
-in
-<span class="categories">
-  
-    <a class='category' href='/blog/categories/amazon/'>Amazon</a>, <a class='category' href='/blog/categories/ec2/'>EC2</a>, <a class='category' href='/blog/categories/sqs/'>SQS</a>, <a class='category' href='/blog/categories/celery/'>celery</a>, <a class='category' href='/blog/categories/erlang/'>erlang</a>, <a class='category' href='/blog/categories/python/'>python</a>, <a class='category' href='/blog/categories/rabbitmq/'>rabbitmq</a>
-  
-</span>
 
 
   </span>
