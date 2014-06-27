@@ -4,7 +4,7 @@
   <title><![CDATA[The blergh]]></title>
   <link href="http://zerosignal0.github.io/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-27T01:39:54+00:00</updated>
+  <updated>2014-06-27T01:44:00+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -20,11 +20,25 @@
     <id>http://zerosignal0.github.io/blog/2014/06/27/python-protip-enable-tab-completion-in-python-shell</id>
     <content type="html"><![CDATA[<p>I was recently chatting with someone that made the statement; &ldquo;The only reason why I use my text editor is because of tab completion, I am a minimalist pythonista.&rdquo;.  I responded with, &ldquo;If your a minimalist, why don&rsquo;t you have tab completion enabled in the interpreter?&rdquo;  They were unaware of the ability to enable tab completion within python.  Here is a my PSA on how to enable this behavior. :)</p>
 
+<br><br>
+
+
 <p>By following these instructions you will be able to enable tab-completion within your python shell.</p>
+
+<br><br>
+
 
 <p><b>Preperation steps:</b></p>
 
+<br>
+
+
 <p>Before enabling tab-completion, you may need to install 2 python modules (rlcompleter, readline).  While these libraries are mostly included with python2.6+, some versions (OS X, for example), require the updated version to allow readline to function correctly.</p>
+
+<br><br>
+
+
+
 
 <figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -33,18 +47,40 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<br><br>
+
+
 <p><b>Step 1:</b></p>
 
+<br>
+
+
 <p>If you don&rsquo;t already have a ~/.pyrc file, this command will create one for you, which is required for this trick to work.</p>
+
+<br><br>
+
+
+
 
 <figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#&gt; touch ~/.pyrc</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<br><br>
+
+
 <p><b>Step 2:</b></p>
 
+<br>
+
+
 <p>Now we will create a file within your homedir which will instruct python to bind tab completion at python launch.</p>
+
+<br><br>
+
+
+
 
 <figure class='code'><figcaption><span>~/.pyrc</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -55,9 +91,20 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<br><br>
+
+
 <p><b>Step 3:</b></p>
 
+<br>
+
+
 <p>Now to ensure that your newly created ~/.pyrc file is executed each time python starts, add the following to your ~/.bashrc (or equiv. shell rc).</p>
+
+<br><br>
+
+
+
 
 <figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -72,14 +119,30 @@
 </span></code></pre></td></tr></table></div></figure>
 
 
+<br><br>
+
+
 <p>Now to test, execute the following:</p>
+
+<br><br>
+
+
+
 
 <figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 </pre></td><td class='code'><pre><code class='bash'><span class='line'><span class="c">#&gt; source ~/.bashrc   #reloads your ~/.bashrc file (if you added the entry to your ~/.bashrc, else ignore)</span>
 </span></code></pre></td></tr></table></div></figure>
 
 
+<br><br>
+
+
 <p>Now we will open the actual python shell, and view the tab completion goodness.</p>
+
+<br><br>
+
+
+
 
 <figure class='code'><figcaption><span>shell</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
 <span class='line-number'>2</span>
@@ -214,6 +277,9 @@
 </span><span class='line'><span class="n">os</span><span class="o">.</span><span class="n">__all__</span>                  <span class="n">os</span><span class="o">.</span><span class="n">extsep</span>                   <span class="n">os</span><span class="o">.</span><span class="n">popen4</span><span class="p">(</span>
 </span><span class='line'><span class="o">&gt;&gt;&gt;</span> <span class="n">os</span><span class="o">.</span>
 </span></code></pre></td></tr></table></div></figure>
+
+
+<br><br>
 
 
 <p>In the above example, I have imported the &ldquo;os&rdquo; module, typed &ldquo;os.&rdquo; and have pressed <tab>.  Now all of the possible matched object names available within the module are shown.  viola, python tab completion enabled.</p>
