@@ -76,6 +76,43 @@ The personal dumping grounds of an engineer, nerdist and human about me You have
           <div class="row">
             <div class="col-md-offset-3 col-md-6">
               <article>
+  <h2><a href="/blog/2014/09/02/is-this-blog-abandoned/">Is This Blog Abandoned?</a></h2>
+  
+  <p>
+    <p>Sorry for the lack of posts lately, but I am in the process currently of moving from SVC back to good ol&#8217; Seattle Washington.  Still working on Microsoft, except now I will be back to an area that makes much more sense for an aging techy like me.  Cost of living will certainly feel a lot better too. I will be back soon though, hopefully with better consistancy in updates as well.</p>
+
+
+  </p>
+  <span class="meta">
+    written 
+
+
+
+
+
+
+
+
+  
+
+
+
+<time datetime="2014-09-02T23:44:45+00:00" pubdate data-updated="true">Sep 2<span>nd</span>, 2014</time>
+    
+
+
+  </span>
+
+  
+</article>
+
+            </div>
+          </div>
+        
+          
+          <div class="row">
+            <div class="col-md-offset-3 col-md-6">
+              <article>
   <h2><a href="/blog/2014/06/27/python-protip-enable-tab-completion-in-python-shell/">Python: Protip - Enable Tab Completion in Python Shell</a></h2>
   
   <p>
@@ -1186,167 +1223,6 @@ in
 
 
 <time datetime="2014-06-03T23:14:06+00:00" pubdate data-updated="true">Jun 3<span>rd</span>, 2014</time>
-    
-
-
-  </span>
-
-  
-</article>
-
-            </div>
-          </div>
-        
-          
-          <div class="row">
-            <div class="col-md-offset-3 col-md-6">
-              <article>
-  <h2><a href="/blog/2014/05/31/python-how-to-init-a-function-by-calling-it-using-a-string/">Python: How to Init a Function by Calling It Using a String</a></h2>
-  
-  <p>
-    <p>This topic is an interesting one that I have faced on a few occasions.  There are a couple of different solution that I have found over the last couple of years that work depending on the situation.  So let&rsquo;s back up again and state the problem in the form of a question.</p>
-
-
-
-
-<p>&ldquo;How do you call a function in python guven a string of the functions name?&rdquo;</p>
-
-
-
-
-<p>Generally this behavior is not allowed due to the strict type casting of python, ie. a function must be a function type before being able to call.  So how do you approach calling a function by using a string? *note that both of these examples are assuming that the functions being called are residing within imported modules.</p>
-
-
-
-
-<p>Here are a couple of examples:</p>
-
-
-
-
-<p>1.)  Use the getattr() built-in function to evaluate a module object and provide a string attribute denoting the name of the function to execute.
-<b>*note This method is generally frowned upon as using getattr and eval are both possibly dangerous built in functions that can lead to security issues / unexpected results.<b></p>
-
-
-
-
-<p>  example:</p>
-
-
-<p><figure class='code'><figcaption><span>simple_example</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">foo</span> <span class="c"># Your module</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">methodCall</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">foo</span><span class="p">,</span> <span class="s">&#39;bar&#39;</span><span class="p">)</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">result</span> <span class="o">=</span> <span class="n">methodCall</span><span class="p">()</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>2.) You can also write an abstract function capable of evaluating the string provided in a function object, and also evaluate if the function exists in a graceful way.
-This approach is a bit more complex and makes use of a couple of different modules, along with leveraging decorator functions.</p>
-
-
-
-
-<p>  example:</p>
-
-
-
-
-<p>  <b>Place this code into a importable module file called registry.py</b></p>
-
-
-<p><figure class='code'><figcaption><span>registry.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-<span class='line-number'>8</span>
-<span class='line-number'>9</span>
-<span class='line-number'>10</span>
-<span class='line-number'>11</span>
-<span class='line-number'>12</span>
-<span class='line-number'>13</span>
-<span class='line-number'>14</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="k">class</span> <span class="nc">Registry</span><span class="p">(</span><span class="nb">object</span><span class="p">):</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf"><strong>init</strong></span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">funcs</span> <span class="o">=</span> <span class="p">{}</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">execute</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">func</span><span class="p">):</span>
-</span><span class='line'>    <span class="bp">self</span><span class="o">.</span><span class="n">funcs</span><span class="p">[</span><span class="n">func</span><span class="o">.</span><span class="n"><strong>name</strong></span><span class="p">]</span> <span class="o">=</span> <span class="n">func</span>
-</span><span class='line'>    <span class="k">return</span> <span class="n">func</span>
-</span><span class='line'>
-</span><span class='line'>  <span class="k">def</span> <span class="nf">dispatch</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">name</span><span class="p">,</span> <span class="o"><em></span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-</span><span class='line'>    <span class="k">try</span><span class="p">:</span>
-</span><span class='line'>      <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">funcs</span><span class="p">[</span><span class="n">name</span><span class="p">](</span><span class="o"></em></span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-</span><span class='line'>    <span class="k">except</span> <span class="ne">Exception</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-</span><span class='line'>      <span class="k">raise</span> <span class="n">Error</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>  <b>Now create a file that contains your functions you wish to call.  In this example call this file myfuncs.py</b></p>
-
-
-<p><figure class='code'><figcaption><span>myfuncs.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-<span class='line-number'>6</span>
-<span class='line-number'>7</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">registry</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">callme</span> <span class="o">=</span> <span class="n">registry</span><span class="o">.</span><span class="n">Register</span><span class="p">()</span>
-</span><span class='line'>
-</span><span class='line'><span class="nd">@callme.execute</span>
-</span><span class='line'><span class="k">def</span> <span class="nf">myCoolFunction</span><span class="p">():</span>
-</span><span class='line'>  <span class="k">print</span> <span class="s">&#39;hello world&#39;</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>  <b>Finally here is the script that will create the string in which we will attempt to execute as a function.</b></p>
-
-
-<p><figure class='code'><figcaption><span>your_script.py</span></figcaption><div class="highlight"><table><tr><td class="gutter"><pre class="line-numbers"><span class='line-number'>1</span>
-<span class='line-number'>2</span>
-<span class='line-number'>3</span>
-<span class='line-number'>4</span>
-<span class='line-number'>5</span>
-</pre></td><td class='code'><pre><code class='python'><span class='line'><span class="kn">import</span> <span class="nn">myfuncs</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">runfunc</span> <span class="o">=</span> <span class="n">myfuncs</span><span class="o">.</span><span class="n">callme</span>
-</span><span class='line'>
-</span><span class='line'><span class="n">runfunc</span><span class="o">.</span><span class="n">dispatch</span><span class="p">(</span><span class="s">&#39;myCoolFunction&#39;</span><span class="p">)</span>
-</span></code></pre></td></tr></table></div></figure></p>
-
-<p>As you can see example 2 is quite a bit more involved however can scale to supporting MANY different function template files.  This means that you can further abstract your code into a template language to dynamically import with.</p>
-
-
-
-
-<p>Enjoy!</p>
-
-
-  </p>
-  <span class="meta">
-    written 
-
-
-
-
-
-
-
-
-  
-
-
-
-<time datetime="2014-05-31T23:22:15+00:00" pubdate data-updated="true">May 31<span>st</span>, 2014</time>
     
 
 

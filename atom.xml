@@ -4,7 +4,7 @@
   <title><![CDATA[The blergh]]></title>
   <link href="http://zerosignal0.github.io/atom.xml" rel="self"/>
   <link href="http://zerosignal0.github.io/"/>
-  <updated>2014-06-27T01:44:00+00:00</updated>
+  <updated>2014-09-02T23:47:25+00:00</updated>
   <id>http://zerosignal0.github.io/</id>
   <author>
     <name><![CDATA[Gary Wright]]></name>
@@ -12,6 +12,15 @@
   </author>
   <generator uri="http://octopress.org/">Octopress</generator>
 
+  
+  <entry>
+    <title type="html"><![CDATA[Is This Blog Abandoned?]]></title>
+    <link href="http://zerosignal0.github.io/blog/2014/09/02/is-this-blog-abandoned/"/>
+    <updated>2014-09-02T23:44:45+00:00</updated>
+    <id>http://zerosignal0.github.io/blog/2014/09/02/is-this-blog-abandoned</id>
+    <content type="html"><![CDATA[<p>Sorry for the lack of posts lately, but I am in the process currently of moving from SVC back to good ol&#8217; Seattle Washington.  Still working on Microsoft, except now I will be back to an area that makes much more sense for an aging techy like me.  Cost of living will certainly feel a lot better too. I will be back soon though, hopefully with better consistancy in updates as well.</p>
+]]></content>
+  </entry>
   
   <entry>
     <title type="html"><![CDATA[Python: Protip - Enable Tab Completion in Python Shell]]></title>
